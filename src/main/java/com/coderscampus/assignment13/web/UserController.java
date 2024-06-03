@@ -65,4 +65,9 @@ public class UserController {
 		userService.delete(userId);
 		return "redirect:/users";
 	}
+
+	@GetMapping("/users/{userId}/accounts/{accountId}")
+	public String editAccount (@PathVariable Long userId, @PathVariable Long accountId)	{
+		return "account";
+	}
 }
