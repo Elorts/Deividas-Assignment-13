@@ -14,8 +14,10 @@ public class AddressService {
 
     public Address getAddress (Long userId) {
 
-        //System.out.println("Repo output: " +
         return addressRepo.getOne(userId);
+    }
 
+    public void saveAddress(Address address) {
+        addressRepo.save(address);
     }
 }

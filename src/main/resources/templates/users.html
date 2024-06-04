@@ -17,27 +17,25 @@
 				<div>
 					Full Name: <input type="text" th:field="${user.name}" />
 				</div>
-
 				<hr/>
-
-
 				<div>
 					Address Line 1: <input type="text" th:field="${address.addressLine1}" />
 				</div>
-
-
-
-<!--				<div>-->
-<!--					Address Line 2: <input type="text" th:field="${address.addressLine2}" />-->
-<!--				</div>-->
-<!--				<div>-->
-<!--					City: <input type="text" th:field="${address.city}" />-->
-<!--				</div>-->
-
-
-
-
-
+				<div>
+					Address Line 2: <input type="text" th:field="${address.addressLine2}" />
+				</div>
+				<div>
+					City: <input type="text" th:field="${address.city}" />
+				</div>
+				<div>
+					Region: <input type="text" th:field="${address.region}" />
+				</div>
+				<div>
+					Country: <input type="text" th:field="${address.country}" />
+				</div>
+				<div>
+					Zip Code: <input type="text" th:field="${address.zipCode}" />
+				</div>
 				<div>
 					<input type="submit" value="Update User Account" />
 				</div>
@@ -46,7 +44,7 @@
 				<input type="submit" value="Delete User Account" />
 			</form>
 		</div>
-		
+		<br/>
 		<div th:unless="${#lists.size(users) == 1}" th:each="user : ${users}">
 
 			<a th:href="@{/users/{userId}(userId=${user.userId})}"> [[${user.userId}]] </a>
