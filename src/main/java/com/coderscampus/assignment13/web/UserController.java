@@ -28,8 +28,7 @@ public class UserController {
 	public String getCreateUser (ModelMap model) {
 		
 		model.put("user", new User());
-		
-		return "register";
+    	return "register";
 	}
 	
 	@PostMapping("/register")
