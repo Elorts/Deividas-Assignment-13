@@ -70,6 +70,7 @@ public class UserController {
 	@PostMapping("/users/{userId}/delete")
 	public String deleteOneUser (@PathVariable Long userId) {
 		userService.delete(userId);
+		addressService.delete(userId);
 		return "redirect:/users";
 	}
 

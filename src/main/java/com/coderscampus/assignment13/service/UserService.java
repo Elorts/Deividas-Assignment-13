@@ -73,6 +73,9 @@ public class UserService {
 	}
 
 	public void delete(Long userId) {
-		userRepo.deleteById(userId);
+		userRepo.customDeletion(userId);
+		//userRepo.deleteById(userId);
 	}
+
+
 }

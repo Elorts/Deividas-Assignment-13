@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
@@ -31,4 +32,8 @@ public interface UserRepository extends JpaRepository<User, Long> {
 		+ " left join fetch u.accounts"
 		+ " left join fetch u.address")
 	Set<User> findAllUsersWithAccountsAndAddresses();
+
+	@Modifying
+	@Query("DELETE FROM User u WHERE u.userId = :userId")
+	void customDeletion(Long userId);
 }

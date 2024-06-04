@@ -20,4 +20,8 @@ public class AddressService {
     public void saveAddress(Address address) {
         addressRepo.save(address);
     }
+
+    public void delete(Long userId) {
+        addressRepo.deleteById(userId);
+    }
 }
