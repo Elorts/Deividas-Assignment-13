@@ -3,7 +3,9 @@ package com.coderscampus.assignment13.web;
 import java.util.Arrays;
 import java.util.Set;
 
+import com.coderscampus.assignment13.domain.Account;
 import com.coderscampus.assignment13.domain.Address;
+import com.coderscampus.assignment13.service.AccountService;
 import com.coderscampus.assignment13.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,6 +25,9 @@ public class UserController {
 
 	@Autowired
 	private AddressService addressService;
+
+	@Autowired
+	private AccountService accountService;
 	
 	@GetMapping("/register")
 	public String getCreateUser (ModelMap model) {
@@ -54,6 +59,8 @@ public class UserController {
 	public String getOneUser (ModelMap model, @PathVariable Long userId) {
 		User user = userService.findById(userId);
 		Address address = addressService.getAddress(userId);
+		Account account = accountService.getAccount(userId);
+		model.put("account", account);
 		model.put("address", address);
 		model.put("users", Arrays.asList(user));
 		model.put("user", user);
