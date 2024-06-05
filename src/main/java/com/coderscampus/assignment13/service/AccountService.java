@@ -3,8 +3,11 @@ package com.coderscampus.assignment13.service;
 import com.coderscampus.assignment13.domain.Account;
 import com.coderscampus.assignment13.domain.UserAccount;
 import com.coderscampus.assignment13.repository.AccountRepository;
+import com.coderscampus.assignment13.repository.UserAccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class AccountService {
@@ -13,11 +16,11 @@ public class AccountService {
     AccountRepository accountRepo;
 
     @Autowired
-    UserAccount
+    UserAccountRepository userAccountRepo;
 
 
 
-    public List<Account> getAccount (Long userId) {
+    public List<Account> getAccounts (Long userId) {
         return accountRepo.findAll(acc);
     }
 

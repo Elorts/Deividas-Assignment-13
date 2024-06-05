@@ -9,7 +9,6 @@ public class UserAccount {
     private Long userId;
     private Long accountId;
 
-    @Id
     public Long getUserId() {
         return userId;
     }

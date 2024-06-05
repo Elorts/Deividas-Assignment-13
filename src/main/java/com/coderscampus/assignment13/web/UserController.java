@@ -1,6 +1,7 @@
 package com.coderscampus.assignment13.web;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Set;
 
 import com.coderscampus.assignment13.domain.Account;
@@ -59,7 +60,7 @@ public class UserController {
 	public String getOneUser (ModelMap model, @PathVariable Long userId) {
 		User user = userService.findById(userId);
 		Address address = addressService.getAddress(userId);
-		Account account = accountService.getAccount(userId);
+		List<Account> account = accountService.getAccounts(userId);
 		model.put("account", account);
 		model.put("address", address);
 		model.put("users", Arrays.asList(user));
