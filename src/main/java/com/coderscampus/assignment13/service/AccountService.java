@@ -13,13 +13,8 @@ public class AccountService {
     @Autowired
     AccountRepository accountRepo;
 
-//    @Autowired
-//    UserAccountRepository userAccountRepo;
-
-
-
-//    public List<Account> getAccounts (Long userId) {
-//        return accountRepo.findAll(acc);
-//    }
+    public Account getAccountName (Long accountId) {
+        return accountRepo.getOne(accountId);
+    }
 
 }

@@ -90,7 +90,8 @@ public class UserController {
 	}
 
 	@GetMapping("/users/{userId}/accounts/{accountId}")
-	public String editAccount (@PathVariable Long userId, @PathVariable Long accountId)	{
+	public String editAccount (@PathVariable Long userId, @PathVariable Long accountId, ModelMap model)	{
+
 		return "account";
 	}
 }

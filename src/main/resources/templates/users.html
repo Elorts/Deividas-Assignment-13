@@ -46,11 +46,13 @@
 			<br/>
 			Accounts
 
-<!--			<div th:each="">-->
+			<div th:each="account : ${accounts}">
+				<a th:href="@{}"
+			</div>
 
 		</div>
 		<br/>
-		<div th:unless="${#lists.size(users) == 1}" th:each="user : ${users}">
+<!--		<div th:unless="${#lists.size(users) == 1}" th:each="user : ${/users/{userId}}">-->
 
 			<a th:href="@{/users/{userId}(userId=${user.userId})}"> [[${user.userId}]] </a>
 <!--			<span th:text="${user.userId}"></span><br/>-->
