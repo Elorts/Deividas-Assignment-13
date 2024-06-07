@@ -17,4 +17,8 @@ public class AccountService {
         return accountRepo.getOne(accountId);
     }
 
+    public void saveAccount (Account account) {
+        accountRepo.save(account);
+    }
+
 }
