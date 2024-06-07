@@ -7,6 +7,7 @@ import java.util.Set;
 import com.coderscampus.assignment13.domain.Account;
 import com.coderscampus.assignment13.domain.Address;
 import com.coderscampus.assignment13.service.AccountService;
+
 import com.coderscampus.assignment13.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -60,8 +61,14 @@ public class UserController {
 	public String getOneUser (ModelMap model, @PathVariable Long userId) {
 		User user = userService.findById(userId);
 		Address address = addressService.getAddress(userId);
-		List<Account> account = accountService.getAccounts(userId);
-		model.put("account", account);
+
+		List<Account> accounts = user.getAccounts();
+//		for (Account a : accounts) {
+//			System.out.println(a.getAccountName());
+//		}
+//		List<Account> account = accountService.getAccounts(userId);
+//
+		model.put("accounts", accounts);
 		model.put("address", address);
 		model.put("users", Arrays.asList(user));
 		model.put("user", user);

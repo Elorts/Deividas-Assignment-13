@@ -43,6 +43,11 @@
 			<form th:action="@{/users/{userId}/delete(userId=${user.userId})}" method="post">
 				<input type="submit" value="Delete User Account" />
 			</form>
+			<br/>
+			Accounts
+
+<!--			<div th:each="">-->
+
 		</div>
 		<br/>
 		<div th:unless="${#lists.size(users) == 1}" th:each="user : ${users}">
