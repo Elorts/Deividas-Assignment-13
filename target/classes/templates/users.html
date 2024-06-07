@@ -45,8 +45,12 @@
 			</form>
 			<br/>
 			Accounts
+			<div th:each="account : ${user.accounts}">
+				<a th:href="@{/users/{userId}/accounts/{accountId} (userId=${user.userId}, accountId=${account.accountId})}"> [[${account.accountName}]] </a>
 
-<!--			<div th:each="">-->
+			</div>
+
+
 
 		</div>
 		<br/>

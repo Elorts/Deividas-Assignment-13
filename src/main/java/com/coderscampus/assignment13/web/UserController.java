@@ -91,7 +91,8 @@ public class UserController {
 
 	@GetMapping("/users/{userId}/accounts/{accountId}")
 	public String editAccount (@PathVariable Long userId, @PathVariable Long accountId, ModelMap model)	{
-
+//		Account account =
+		model.put("account", accountService.getAccount(accountId));
 		return "account";
 	}
 }
