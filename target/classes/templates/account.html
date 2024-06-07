@@ -3,7 +3,18 @@
         <title>Edit Account</title>
     </head>
     <body>
-        <h2>Edit Account Page</h2>
+        <h2>[[${account.accountName}]]</h2>
 
+        <form action="" method="post">
+            <div>
+                Account Name: <input type="text" th:field="${account.accountName}"/>
+            </div>
+            <div>
+                <input type="submit" value="Save Account"/>
+            </div>
+        </form>
+
+        <br/>
+        <br><a href="/users"> Back </a>
     </body>
 </html>
