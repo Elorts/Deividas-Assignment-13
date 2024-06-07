@@ -43,12 +43,21 @@
 			<form th:action="@{/users/{userId}/delete(userId=${user.userId})}" method="post">
 				<input type="submit" value="Delete User Account" />
 			</form>
+
 			<br/>
-			Accounts
+
+			<p><h2>Accounts</h2></p>
+
 			<div th:each="account : ${user.accounts}">
 				<a th:href="@{/users/{userId}/accounts/{accountId} (userId=${user.userId}, accountId=${account.accountId})}"> [[${account.accountName}]] </a>
 
 			</div>
+
+			<div>
+				<input type="button" value="Create New Bank Account"/>
+			</div>
+
+			<br><a href="/users"> Back </a>
 
 
 
