@@ -45,14 +45,16 @@
 			</form>
 			<br/>
 			Accounts
-
-			<div th:each="account : ${accounts}">
-				<a th:href="@{}"
+			<div th:each="account : ${user.accounts}">
+				<a th:href="@{/users/{userId}/accounts/{accountId} (userId=${user.userId}, accountId=${account.accountId})}"> [[${account.accountName}]] </a>
+				<!--				<span th:text="${account.accountName}"></span>-->
 			</div>
+
+
 
 		</div>
 		<br/>
-<!--		<div th:unless="${#lists.size(users) == 1}" th:each="user : ${/users/{userId}}">-->
+		<div th:unless="${#lists.size(users) == 1}" th:each="user : ${users}">
 
 			<a th:href="@{/users/{userId}(userId=${user.userId})}"> [[${user.userId}]] </a>
 <!--			<span th:text="${user.userId}"></span><br/>-->
