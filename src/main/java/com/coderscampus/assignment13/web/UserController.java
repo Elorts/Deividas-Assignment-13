@@ -95,4 +95,11 @@ public class UserController {
 		model.put("account", accountService.getAccount(accountId));
 		return "account";
 	}
+
+	@PostMapping("/users/{userId}/accounts/{accountId}")
+	public String postAccount (Account accountName) {
+		accountService.saveAccount(accountName);
+		return null;
+		}
+
 }
