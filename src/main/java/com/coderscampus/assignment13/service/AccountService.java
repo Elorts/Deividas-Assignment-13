@@ -13,11 +13,11 @@ public class AccountService {
     @Autowired
     AccountRepository accountRepo;
 
-    public Account getAccount (Long accountId) {
+    public Account getAccount(Long accountId) {
         return accountRepo.getOne(accountId);
     }
 
-    public void saveAccount (Account account) {
+    public void saveAccount(Account account) {
         accountRepo.save(account);
     }
 

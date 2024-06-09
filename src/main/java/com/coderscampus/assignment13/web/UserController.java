@@ -97,9 +97,10 @@ public class UserController {
 	}
 
 	@PostMapping("/users/{userId}/accounts/{accountId}")
-	public String postAccount (Account accountName) {
-		accountService.saveAccount(accountName);
-		return null;
+	public String postAccount (Account account) {
+		System.out.println("account name: " + account.getAccountName());
+		accountService.saveAccount(account);
+		return "redirect:/users/{userId}/accounts/{accountId}";
 		}
 
 }
