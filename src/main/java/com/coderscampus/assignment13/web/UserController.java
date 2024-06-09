@@ -92,6 +92,7 @@ public class UserController {
 	@GetMapping("/users/{userId}/accounts/{accountId}")
 	public String editAccount (@PathVariable Long userId, @PathVariable Long accountId, ModelMap model)	{
 //		Account account =
+
 		model.put("account", accountService.getAccount(accountId));
 		return "account";
 	}
@@ -99,6 +100,7 @@ public class UserController {
 	@PostMapping("/users/{userId}/accounts/{accountId}")
 	public String postAccount (Account account) {
 		System.out.println("account name: " + account.getAccountName());
+		System.out.println("postmapping entered");
 		accountService.saveAccount(account);
 		return "redirect:/users/{userId}/accounts/{accountId}";
 		}
