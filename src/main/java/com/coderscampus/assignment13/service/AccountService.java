@@ -14,14 +14,17 @@ public class AccountService {
     AccountRepository accountRepo;
 
     public Account getAccount(Long accountId) {
-        if (accountId == 0) {
-            Account newAccount = new Account();
-            System.out.println(newAccount.getAccountId());
-        }
+
         return accountRepo.getOne(accountId);
     }
 
     public void saveAccount(Account account) {
+
+        if (account.getAccountName() == null) {
+            Account newAccount = new Account();
+            System.out.println("NAUJAS ACCOUNTAS:" + newAccount.getAccountId());
+        }
+
         accountRepo.save(account);
     }
 

@@ -54,7 +54,8 @@
 			</div>
 
 			<div>
-				<p><input type="button" value="Create New Bank Account"/></p>
+				<form th:action="@{/users/{userId}/accounts/0 (userId=${user.userId})}" method="post">
+					<input type="submit" value="Create New Bank Account" />
 			</div>
 
 			<br><a href="/users"> Back </a>
