@@ -18,15 +18,28 @@ import javax.persistence.Table;
 @Entity // Class name = User, DB Table name = user
 @Table(name = "users")
 public class User {
-	private Long userId;
-	private String username;
-	private String password;
-	private String name;
-	private LocalDate createdDate;
-	private List<Account> accounts = new ArrayList<>();
-	private Address address;
-	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long userId;
+
+	private String username;
+
+	private String password;
+
+	private String name;
+
+	private LocalDate createdDate;
+
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "user_account",
+			joinColumns = @JoinColumn(name = "user_id"),
+			inverseJoinColumns = @JoinColumn(name = "account_id"))
+	private List<Account> accounts = new ArrayList<>();
+
+	@OneToOne(mappedBy = "user")
+	private Address address;
+
+	
+
 	public Long getUserId() {
 		return userId;
 	}
@@ -58,23 +71,23 @@ public class User {
 	public void setCreatedDate(LocalDate createdDate) {
 		this.createdDate = createdDate;
 	}
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name = "user_account",
-	           joinColumns = @JoinColumn(name = "user_id"), 
-	           inverseJoinColumns = @JoinColumn(name = "account_id"))
+
+
 	public List<Account> getAccounts() {
 		return accounts;
 	}
+
 	public void setAccounts(List<Account> accounts) {
 		this.accounts = accounts;
 	}
-	@OneToOne(mappedBy = "user")
+
 	public Address getAddress() {
 		return address;
 	}
 	public void setAddress(Address address) {
 		this.address = address;
 	}
+
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", username=" + username + ", password=" + password + ", name=" + name

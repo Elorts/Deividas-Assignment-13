@@ -61,6 +61,7 @@ public class UserController {
 	public String getOneUser (ModelMap model, @PathVariable Long userId) {
 		User user = userService.findById(userId);
 		Address address = addressService.getAddress(userId);
+		//Account account =
 
 		List<Account> accounts = user.getAccounts();
 //		for (Account a : accounts) {
@@ -91,16 +92,25 @@ public class UserController {
 
 	@GetMapping("/users/{userId}/accounts/{accountId}")
 	public String editAccount (@PathVariable Long userId, @PathVariable Long accountId, ModelMap model)	{
-//		Account account =
 		model.put("account", accountService.getAccount(accountId));
 		return "account";
 	}
 
 	@PostMapping("/users/{userId}/accounts/{accountId}")
-	public String postAccount (Account account) {
-		System.out.println("account name: " + account.getAccountName());
+	public String postAccount (Account account, User user) {
 		accountService.saveAccount(account);
 		return "redirect:/users/{userId}/accounts/{accountId}";
 		}
+
+	@PostMapping("/users/{userId}/accounts")
+	public String createAccount (@PathVariable Long userId) {
+		//System.out.println("account name: " + account.getAccountName());
+		//System.out.println("user: " + user.getName());
+
+		System.out.println("USER CONTROLLER, user id: " + userId);  // my test code
+
+		accountService.createAccount(userId);
+		return "redirect:/users";
+	}
 
 }
