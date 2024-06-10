@@ -61,12 +61,14 @@ public class UserService {
 			Account checking = new Account();
 			checking.setAccountName("Checking Account");
 			checking.getUsers().add(user);
+
 			Account savings = new Account();
 			savings.setAccountName("Savings Account");
 			savings.getUsers().add(user);
 			
 			user.getAccounts().add(checking);
 			user.getAccounts().add(savings);
+
 			accountRepo.save(checking);
 			accountRepo.save(savings);
 		}
