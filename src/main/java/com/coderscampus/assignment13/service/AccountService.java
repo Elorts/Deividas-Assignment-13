@@ -27,7 +27,7 @@ public class AccountService {
             accountRepo.save(account);
     }
 
-    public void createAccount(Long userId) {
+    public long createAccount(Long userId) {
         User user = new User();
         user = userRepo.getOne(userId);
         Integer numberOfAccounts = user.getAccounts().size() + 1;
@@ -45,6 +45,7 @@ public class AccountService {
 
         System.out.println("NAUJAS ACCOUNTAS:" + newAccount.getAccountName());
 
+        return newAccount.getAccountId();
     }
 
 }

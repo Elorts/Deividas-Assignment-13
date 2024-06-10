@@ -109,8 +109,8 @@ public class UserController {
 
 		System.out.println("USER CONTROLLER, user id: " + userId);  // my test code
 
-		accountService.createAccount(userId);
-		return "redirect:/users";
+
+		return "redirect:/users/" + userId + "/accounts/" + accountService.createAccount(userId);
 	}
 
 }
