@@ -61,6 +61,7 @@ public class UserController {
 	public String getOneUser (ModelMap model, @PathVariable Long userId) {
 		User user = userService.findById(userId);
 		Address address = addressService.getAddress(userId);
+		//Account account =
 
 		List<Account> accounts = user.getAccounts();
 //		for (Account a : accounts) {
