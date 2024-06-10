@@ -57,6 +57,7 @@ public class UserService {
 
 	public User saveUser(User user) {
 		if (user.getUserId() == null) {
+
 			Account checking = new Account();
 			checking.setAccountName("Checking Account");
 			checking.getUsers().add(user);

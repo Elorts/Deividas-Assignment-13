@@ -96,12 +96,14 @@ public class UserController {
 	}
 
 	@PostMapping("/users/{userId}/accounts/{accountId}")
-	public String postAccount (Account account) {
+	public String postAccount (Account account, User user, @PathVariable Long userId) {
 		System.out.println("account name: " + account.getAccountName());
+		System.out.println("user: " + user.getName());
+		System.out.println("user id: " + userId);
 
-		System.out.println("postmapping entered");
+		//System.out.println("postmapping entered");
 
-		accountService.saveAccount(account);
+		accountService.saveAccount(account, userId);
 		return "redirect:/users/{userId}/accounts/{accountId}";
 		}
 
