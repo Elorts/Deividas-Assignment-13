@@ -77,9 +77,10 @@ public class UserController {
 	}
 	
 	@PostMapping("/users/{userId}")
-	public String postOneUser (User user, Address address) {
+	public String postOneUser (User user, Address address, Account account) {
 		userService.saveUser(user);
 		addressService.saveAddress(address);
+		accountService.saveAccount(account);
 		return "redirect:/users/"+user.getUserId();
 	}
 	
