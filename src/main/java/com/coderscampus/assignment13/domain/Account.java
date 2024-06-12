@@ -20,7 +20,11 @@ public class Account {
 	@OneToMany(mappedBy = "account")
 	private List<Transaction> transactions = new ArrayList<>();
 
-	@ManyToMany(mappedBy = "accounts")
+//	@ManyToMany(mappedBy = "accounts")
+	@ManyToMany   //(fetch = FetchType.LAZY)
+	@JoinTable(name = "user_account",
+			joinColumns = @JoinColumn(name = "account_id"),
+			inverseJoinColumns = @JoinColumn(name = "user_id"))
 	private List<User> users = new ArrayList<>();
 	
 
