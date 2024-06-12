@@ -79,8 +79,9 @@ public class UserService {
 
 		account.getUsers().add(user);
 		user.getAccounts().add(account);
+		userRepo.save(user);
 
-		return userRepo.save(user);
+		return null;
 	}
 
 	public void delete(Long userId) {
