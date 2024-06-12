@@ -38,12 +38,12 @@ public class UserController {
     	return "register";
 	}
 	
-	@PostMapping("/register")
-	public String postCreateUser (User user) {
-		System.out.println(user);
-		userService.saveUser(user);
-		return "redirect:/register";
-	}
+//	@PostMapping("/register")
+//	public String postCreateUser (User user) {
+//		System.out.println(user);
+//		userService.saveUser(user, account);
+//		return "redirect:/register";
+//	}
 	
 	@GetMapping("/users")
 	public String getAllUsers (ModelMap model) {
@@ -77,8 +77,8 @@ public class UserController {
 	}
 	
 	@PostMapping("/users/{userId}")
-	public String postOneUser (User user, Address address) { //}, Account account) {
-		userService.saveUser(user);
+	public String postOneUser (User user, Address address, Account account) { //}, Account account) {
+		userService.saveUser(user, account);
 		addressService.saveAddress(address);
 		//accountService.saveAccount(account);
 		return "redirect:/users/"+user.getUserId();

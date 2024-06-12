@@ -55,7 +55,11 @@ public class UserService {
 		return userOpt.orElse(new User());
 	}
 
-	public User saveUser(User user) {
+	public User saveUser(User user, Account account) {
+
+//		Account account = new Account();
+//		User user2 = new User();
+
 		if (user.getUserId() == null) {
 
 			Account checking = new Account();
@@ -72,6 +76,10 @@ public class UserService {
 			accountRepo.save(checking);
 			accountRepo.save(savings);
 		}
+
+		account.getUsers().add(user);
+		user.getAccounts().add(account);
+
 		return userRepo.save(user);
 	}
 

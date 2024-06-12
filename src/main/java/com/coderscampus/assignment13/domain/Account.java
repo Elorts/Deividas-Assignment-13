@@ -2,6 +2,7 @@ package com.coderscampus.assignment13.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.*;
 
@@ -49,5 +50,18 @@ public class Account {
 	}
 	public void setUsers(List<User> users) {
 		this.users = users;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Account account = (Account) o;
+		return Objects.equals(accountId, account.accountId) && Objects.equals(accountName, account.accountName) && Objects.equals(transactions, account.transactions) && Objects.equals(users, account.users);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(accountId, accountName, transactions, users);
 	}
 }

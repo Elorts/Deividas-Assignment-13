@@ -20,7 +20,7 @@ public class User {
 
 	private LocalDate createdDate;
 
-	@ManyToMany(cascade = CascadeType.ALL)   //(fetch = FetchType.LAZY)
+	@ManyToMany(cascade = CascadeType.PERSIST)   //(fetch = FetchType.LAZY)
 	@JoinTable(name = "user_account",
 			joinColumns = @JoinColumn(name = "user_id"),
 			inverseJoinColumns = @JoinColumn(name = "account_id"))
