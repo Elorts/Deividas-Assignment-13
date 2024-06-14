@@ -20,11 +20,11 @@ public class User {
 
 	private LocalDate createdDate;
 
-//	@ManyToMany   //(fetch = FetchType.LAZY)
-//	@JoinTable(name = "user_account",
-//			joinColumns = @JoinColumn(name = "user_id"),
-//			inverseJoinColumns = @JoinColumn(name = "account_id"))
-	@ManyToMany(mappedBy = "users")
+	@ManyToMany   //(fetch = FetchType.LAZY)
+	@JoinTable(name = "user_account",
+			joinColumns = @JoinColumn(name = "user_id"),
+			inverseJoinColumns = @JoinColumn(name = "account_id"))
+//	@ManyToMany(mappedBy = "users")
 	private List<Account> accounts = new ArrayList<>();
 
 	@OneToOne(mappedBy = "user")

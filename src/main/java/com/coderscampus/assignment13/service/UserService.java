@@ -1,9 +1,7 @@
 package com.coderscampus.assignment13.service;
 
 import java.time.LocalDate;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 import com.coderscampus.assignment13.repository.AddressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -77,8 +75,18 @@ public class UserService {
 			accountRepo.save(savings);
 		}
 
-		account.getUsers().add(user);
-		user.getAccounts().add(account);
+//		List<User> users = new ArrayList<>(); // mine
+//		users.add(user); 					// mine
+
+		//account.getUsers().add(user);
+
+//		account.setUsers(users); // mine invention
+//
+//		List<Account> accounts = new ArrayList<>(); // mine
+//		accounts.add(account);
+//
+//		//user.getAccounts().add(account);
+//		user.setAccounts(accounts);
 		userRepo.save(user);
 
 		return null;

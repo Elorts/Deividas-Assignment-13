@@ -78,6 +78,15 @@ public class UserController {
 	
 	@PostMapping("/users/{userId}")
 	public String postOneUser (User user, Address address, Account account) { //}, Account account) {
+
+		System.out.println("user ID:" + user.getUserId());
+		System.out.println("user.getAccounts: " + user.getAccounts().size());
+		System.out.println("user.getName: " + user.getName());
+
+		System.out.println("account id:" + account.getAccountId());
+		System.out.println("account name:" + account.getAccountName());
+
+
 		userService.saveUser(user, account);
 		addressService.saveAddress(address);
 		//accountService.saveAccount(account);
