@@ -38,7 +38,6 @@ public class UserController {
     	return "register";
 	}
 
-
 //	@PostMapping("/register")
 //	public String postCreateUser (User user) {
 //		System.out.println(user);
