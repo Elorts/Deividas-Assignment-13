@@ -37,7 +37,8 @@ public class UserController {
 		model.put("user", new User());
     	return "register";
 	}
-	
+
+
 //	@PostMapping("/register")
 //	public String postCreateUser (User user) {
 //		System.out.println(user);
