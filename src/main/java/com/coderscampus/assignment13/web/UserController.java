@@ -66,6 +66,7 @@ public class UserController {
 		//Account account =
 
 		List<Account> accounts = user.getAccounts();
+
 //		for (Account a : accounts) {
 //			System.out.println(a.getAccountName());
 //		}
