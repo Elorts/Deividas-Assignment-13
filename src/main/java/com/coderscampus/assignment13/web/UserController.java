@@ -87,10 +87,13 @@ public class UserController {
 	}
 	
 	@PostMapping("/users/{userId}")
-	public String postOneUser (User user, Address address, Account account) { //}, Account account) {
+	public String postOneUser (User user, Address address, Account account, @PathVariable Long userId) { //}, Account account) {
 
+
+
+		System.out.println("account.getUsers():" + account.getUsers());
 		System.out.println("user ID:" + user.getUserId());
-		System.out.println("user.getAccounts: " + user.getAccounts().size());
+		System.out.println("user.getAccount().size(): " + user.getAccounts().size());
 		System.out.println("user.getName: " + user.getName());
 
 		System.out.println("account id:" + account.getAccountId());

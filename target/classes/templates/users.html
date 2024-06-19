@@ -37,9 +37,9 @@
 					Zip Code: <input type="text" th:field="${address.zipCode}" />
 				</div>
 				<div>
-					<div th:each="accountq : ${user.accounts}">
-						Account: <input type="text" th:field="${accountq.accountName}" />
-					</div>
+					<input type="text" th:field="${user.accounts}" />
+
+
 				</div>
 				<div>
 					<input type="submit" value="Update User Account" />
