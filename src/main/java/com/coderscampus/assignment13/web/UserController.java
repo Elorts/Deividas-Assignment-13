@@ -54,17 +54,7 @@ public class UserController {
 
 		List<Account> accounts = user.getAccounts();
 
-//		for (Account a : accounts) {
-//			System.out.println(a.getAccountName());
-//		}
-//		List<Account> account = accountService.getAccounts(userId);
-//
-		//**************** my code
-		//System.out.println(accounts.getFirst());
-
 		System.out.println("Get size in getMapping:" + user.getAccounts().size());
-
-
 
 		model.put("accounts", accounts);
 		model.put("address", address);
