@@ -55,9 +55,6 @@ public class UserService {
 
 	public User saveUser(User user, Account account) {
 
-//		Account account = new Account();
-//		User user2 = new User();
-
 		if (user.getUserId() == null) {
 
 			Account checking = new Account();
@@ -75,18 +72,6 @@ public class UserService {
 			accountRepo.save(savings);
 		}
 
-//		List<User> users = new ArrayList<>(); // mine
-//		users.add(user); 					// mine
-
-		//account.getUsers().add(user);
-
-//		account.setUsers(users); // mine invention
-//
-//		List<Account> accounts = new ArrayList<>(); // mine
-//		accounts.add(account);
-//
-//		//user.getAccounts().add(account);
-//		user.setAccounts(accounts);
 		userRepo.save(user);
 
 		return null;
@@ -94,8 +79,5 @@ public class UserService {
 
 	public void delete(Long userId) {
 		userRepo.customDeletion(userId);
-		//userRepo.deleteById(userId);
 	}
-
-
 }

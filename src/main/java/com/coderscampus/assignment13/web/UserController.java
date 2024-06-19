@@ -30,8 +30,8 @@ public class UserController {
 	
 	@GetMapping("/register")
 	public String getCreateUser (ModelMap model) {
-		
 		model.put("user", new User());
+
     	return "register";
 	}
 
@@ -51,35 +51,21 @@ public class UserController {
 	public String getOneUser (ModelMap model, @PathVariable Long userId) {
 		User user = userService.findById(userId);
 		Address address = addressService.getAddress(userId);
-
 		List<Account> accounts = user.getAccounts();
-
-		System.out.println("Get size in getMapping:" + user.getAccounts().size());
 
 		model.put("accounts", accounts);
 		model.put("address", address);
 		model.put("users", Arrays.asList(user));
 		model.put("user", user);
+
 		return "users";
 	}
 	
 	@PostMapping("/users/{userId}")
-	public String postOneUser (User user, Address address, Account account, @PathVariable Long userId) { //}, Account account) {
-
-
-
-		System.out.println("account.getUsers():" + account.getUsers());
-		System.out.println("user ID:" + user.getUserId());
-		System.out.println("user.getAccount().size(): " + user.getAccounts().size());
-		System.out.println("user.getName: " + user.getName());
-
-		System.out.println("account id:" + account.getAccountId());
-		System.out.println("account name:" + account.getAccountName());
-
-
+	public String postOneUser (User user, Address address, Account account, @PathVariable Long userId) {
 		userService.saveUser(user, account);
 		addressService.saveAddress(address);
-		//accountService.saveAccount(account);
+
 		return "redirect:/users/"+user.getUserId();
 	}
 	
@@ -87,28 +73,27 @@ public class UserController {
 	public String deleteOneUser (@PathVariable Long userId) {
 		addressService.delete(userId);
 		userService.delete(userId);
+
     	return "redirect:/users";
 	}
 
 	@GetMapping("/users/{userId}/accounts/{accountId}")
 	public String editAccount (@PathVariable Long userId, @PathVariable Long accountId, ModelMap model)	{
 		model.put("account", accountService.getAccount(accountId));
+
 		return "account";
 	}
 
 	@PostMapping("/users/{userId}/accounts/{accountId}")
 	public String postAccount (Account account, User user) {
 		accountService.saveAccount(account);
+
 		return "redirect:/users/{userId}/accounts/{accountId}";
 		}
 
 	@PostMapping("/users/{userId}/accounts")
 	public String createAccount (@PathVariable Long userId) {
-		//System.out.println("account name: " + account.getAccountName());
-		//System.out.println("user: " + user.getName());
-
 		System.out.println("USER CONTROLLER, user id: " + userId);  // my test code
-
 
 		return "redirect:/users/" + userId + "/accounts/" + accountService.createAccount(userId);
 	}

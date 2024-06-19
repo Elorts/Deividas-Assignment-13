@@ -36,8 +36,9 @@
 				<div>
 					Zip Code: <input type="text" th:field="${address.zipCode}" />
 				</div>
+				<br>
 				<div>
-					<input type="text" th:field="${user.accounts}" />
+					<input type="hidden" th:field="${user.accounts}" />
 				</div>
 				<div>
 					<input type="submit" value="Update User Account" />
@@ -49,7 +50,7 @@
 				<input type="submit" value="Delete User Account" />
 			</form>
 
-			<br/>
+			<hr/>
 
 			<p><h2>Accounts</h2></p>
 
@@ -63,7 +64,9 @@
 					<input type="submit" value="Create New Bank Account" />
 			</div>
 
-			<br><a href="/users"> Back </a>
+			<br/>
+
+			<a href="#" onclick="history.go(-1)">Go Back</a>
 		</div>
 
 		<br/>
@@ -71,6 +74,7 @@
 		<div th:unless="${#lists.size(users) == 1}" th:each="user : ${users}">
 
 			<a th:href="@{/users/{userId}(userId=${user.userId})}"> [[${user.userId}]] </a>
+			<br>
 			<span th:text="${user.username}"></span><br/>
 			<span th:text="${user.name}"></span><br/>
 			<span th:text="${user.password}"></span>

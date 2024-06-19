@@ -7,8 +7,6 @@ import com.coderscampus.assignment13.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class AccountService {
 
@@ -24,26 +22,20 @@ public class AccountService {
     }
 
     public void saveAccount(Account account) {
-            accountRepo.save(account);
+        accountRepo.save(account);
     }
 
     public long createAccount(Long userId) {
         User user = new User();
         user = userRepo.getOne(userId);
         Integer numberOfAccounts = user.getAccounts().size() + 1;
-
-        System.out.println("NUMBER OF ACCOUNTS: " + numberOfAccounts);
-
         Account newAccount = new Account();
-        newAccount.setAccountName("Account #" + numberOfAccounts);  //newAccount.getAccountId());
+
+        newAccount.setAccountName("Account #" + numberOfAccounts);
         newAccount.getUsers().add(userRepo.getOne(userId));
         accountRepo.save(newAccount);
-
         user.getAccounts().add(newAccount);
         userRepo.save(user);
-
-
-        System.out.println("NAUJAS ACCOUNTAS:" + newAccount.getAccountName());
 
         return newAccount.getAccountId();
     }

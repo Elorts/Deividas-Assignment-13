@@ -17,11 +17,6 @@ import javax.transaction.Transactional;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
-//	// Custom save user query - for some reason, the built-in one deletes the joint account entry // u.password = :password,
-//	@Query("UPDATE User u SET u.username = " + user. :username, u.password = :password, u.name = :name\n" +
-//			"WHERE u.userId = :userId")
-//	User customSave(User user);
-
 	// select * from users where username = :username
 	List<User> findByUsername(String username);
 	

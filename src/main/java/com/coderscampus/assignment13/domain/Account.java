@@ -22,10 +22,6 @@ public class Account {
 
 
 	@ManyToMany(mappedBy = "accounts")
-//	@ManyToMany   //(fetch = FetchType.LAZY)
-//	@JoinTable(name = "user_account",
-//			joinColumns = @JoinColumn(name = "account_id"),
-//			inverseJoinColumns = @JoinColumn(name = "user_id"))
 	private List<User> users = new ArrayList<>();
 	
 

@@ -6,7 +6,7 @@ import java.util.List;
 
 import javax.persistence.*;
 
-@Entity // Class name = User, DB Table name = user
+@Entity
 @Table(name = "users")
 public class User {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,17 +20,14 @@ public class User {
 
 	private LocalDate createdDate;
 
-	@ManyToMany   //(fetch = FetchType.LAZY)
+	@ManyToMany
 	@JoinTable(name = "user_account",
 			joinColumns = @JoinColumn(name = "user_id"),
 			inverseJoinColumns = @JoinColumn(name = "account_id"))
-//	@ManyToMany(mappedBy = "users")
 	private List<Account> accounts = new ArrayList<>();
 
 	@OneToOne(mappedBy = "user")
 	private Address address;
-
-	
 
 	public Long getUserId() {
 		return userId;
