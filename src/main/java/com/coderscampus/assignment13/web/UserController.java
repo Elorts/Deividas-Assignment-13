@@ -3,11 +3,9 @@ package com.coderscampus.assignment13.web;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
-
 import com.coderscampus.assignment13.domain.Account;
 import com.coderscampus.assignment13.domain.Address;
 import com.coderscampus.assignment13.service.AccountService;
-
 import com.coderscampus.assignment13.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,7 +13,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
 import com.coderscampus.assignment13.domain.User;
 import com.coderscampus.assignment13.service.UserService;
 
@@ -38,13 +35,6 @@ public class UserController {
     	return "register";
 	}
 
-//	@PostMapping("/register")
-//	public String postCreateUser (User user) {
-//		System.out.println(user);
-//		userService.saveUser(user, account);
-//		return "redirect:/register";
-//	}
-	
 	@GetMapping("/users")
 	public String getAllUsers (ModelMap model) {
 		Set<User> users = userService.findAll();
