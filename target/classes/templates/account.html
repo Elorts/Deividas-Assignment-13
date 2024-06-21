@@ -1,9 +1,11 @@
 <html xmlns:th="http://thymeleaf.org">
     <head>
         <title>Edit Account</title>
+
     </head>
     <body>
         <h2>[[${account.accountName}]]</h2>
+
         <form action="" method="post">
             <div>
                 Account Name: <input type="text" th:field="${account.accountName}"/>
@@ -13,6 +15,8 @@
             </div>
         </form>
         <hr/>
-        <a href="#" onclick="history.back()">Go Back</a>
+<!--        <a href="#" onclick="history.back()">Go Back</a>-->
+
+        <a th:href="@{/users/{userId}(userId=${userId})}"> Go Back </a>
     </body>
 </html>

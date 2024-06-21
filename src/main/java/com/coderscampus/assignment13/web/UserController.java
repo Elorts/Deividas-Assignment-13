@@ -80,7 +80,7 @@ public class UserController {
 	@GetMapping("/users/{userId}/accounts/{accountId}")
 	public String editAccount (@PathVariable Long userId, @PathVariable Long accountId, ModelMap model)	{
 		model.put("account", accountService.getAccount(accountId));
-
+		model.put("userId", userId);
 		return "account";
 	}
 
