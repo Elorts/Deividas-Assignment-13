@@ -31,6 +31,7 @@ public class AccountService {
         Integer numberOfAccounts = user.getAccounts().size() + 1;
         Account newAccount = new Account();
 
+
         newAccount.setAccountName("Account #" + numberOfAccounts);
         newAccount.getUsers().add(userRepo.getOne(userId));
         accountRepo.save(newAccount);
