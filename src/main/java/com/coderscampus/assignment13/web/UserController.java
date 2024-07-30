@@ -98,5 +98,4 @@ public class UserController {
 		return "redirect:/users/" + userId + "/accounts/" + accountService.createAccount(userId);
 	}
 
-
 }
