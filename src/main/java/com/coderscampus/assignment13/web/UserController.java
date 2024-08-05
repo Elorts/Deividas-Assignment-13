@@ -45,7 +45,6 @@ public class UserController {
 			model.put("user", users.iterator().next());
 		}
 
-
 		return "users";
 	}
 	
