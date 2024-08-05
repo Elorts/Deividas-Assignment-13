@@ -35,7 +35,6 @@ public class UserController {
     	return "register";
 	}
 
-	//get all users
 	@GetMapping("/users")
 	public String getAllUsers (ModelMap model) {
 		Set<User> users = userService.findAll();
