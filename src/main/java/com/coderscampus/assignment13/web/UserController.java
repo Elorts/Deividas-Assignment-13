@@ -36,6 +36,14 @@ public class UserController {
     	return "register";
 	}
 
+	@PostMapping("/register")
+	public String postCreateUser (User user) {
+		System.out.println(user);
+		Account address = new Account(); // <------- ******************  SOMEHOW CREATE AN EMPTY ADDRESS OBJECT FOR NEW USER
+		userService.saveUser(user, address);
+		return "redirect:/register";
+	}
+
 	@GetMapping("/users")
 	public String getAllUsers (ModelMap model) {
 		Set<User> users = userService.findAll();
