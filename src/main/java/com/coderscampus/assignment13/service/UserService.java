@@ -3,6 +3,7 @@ package com.coderscampus.assignment13.service;
 import java.time.LocalDate;
 import java.util.*;
 
+import com.coderscampus.assignment13.domain.Address;
 import com.coderscampus.assignment13.repository.AddressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,9 @@ public class UserService {
 
 	@Autowired
 	private AddressRepository addressRepo;
+
+	@Autowired
+	private AddressService addressService;
 
 	public List<User> findByUsername(String username) {
 		return userRepo.findByUsername(username);
@@ -53,27 +57,34 @@ public class UserService {
 		return userOpt.orElse(new User());
 	}
 
-	public User saveUser(User user, Account account) {
+	public User saveNewUser(User user, Address address) {
 
-		if (user.getUserId() == null) {
+		Account checking = new Account();
+		checking.setAccountName("Checking Account");
+		checking.getUsers().add(user);
 
-			Account checking = new Account();
-			checking.setAccountName("Checking Account");
-			checking.getUsers().add(user);
+		Account savings = new Account();
+		savings.setAccountName("Savings Account");
+		savings.getUsers().add(user);
 
-			Account savings = new Account();
-			savings.setAccountName("Savings Account");
-			savings.getUsers().add(user);
-			
-			user.getAccounts().add(checking);
-			user.getAccounts().add(savings);
+		user.getAccounts().add(checking);
+		user.getAccounts().add(savings);
 
-			accountRepo.save(checking);
-			accountRepo.save(savings);
-		}
+		accountRepo.save(checking);
+		accountRepo.save(savings);
 
 		userRepo.save(user);
 
+		address.setUser(user);
+		user.setAddress(address);
+
+		addressRepo.save(address);
+
+		return null;
+	}
+
+	public User saveUser(User user) {
+		userRepo.save(user);
 		return null;
 	}
 
