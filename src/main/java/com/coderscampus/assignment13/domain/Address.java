@@ -9,7 +9,7 @@ public class Address {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long userId;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.PERSIST)
 	@MapsId
 	@JoinColumn(name="user_id")
 	private User user;

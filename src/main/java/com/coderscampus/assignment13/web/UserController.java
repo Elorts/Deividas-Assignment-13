@@ -12,7 +12,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
@@ -32,15 +31,19 @@ public class UserController {
 	@GetMapping("/register")
 	public String getCreateUser (ModelMap model) {
 		model.put("user", new User());
-
+		model.put("address", new Address());
     	return "register";
 	}
 
 	@PostMapping("/register")
-	public String postCreateUser (User user) {
+	public String postCreateUser (User user, Address address) {
+
 		System.out.println(user);
-		Account address = new Account(); // <------- ******************  SOMEHOW CREATE AN EMPTY ADDRESS OBJECT FOR NEW USER
-		userService.saveUser(user, address);
+
+
+
+
+		userService.saveNewUser(user, address);
 		return "redirect:/register";
 	}
 
@@ -72,7 +75,7 @@ public class UserController {
 	
 	@PostMapping("/users/{userId}")
 	public String postOneUser (User user, Address address, Account account, @PathVariable Long userId) {
-		userService.saveUser(user, account);
+		userService.saveUser(user);
 		addressService.saveAddress(address);
 
 		return "redirect:/users/"+user.getUserId();
