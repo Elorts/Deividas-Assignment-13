@@ -3,7 +3,6 @@ package com.coderscampus.assignment13.domain;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-
 import javax.persistence.*;
 
 @Entity
@@ -20,10 +19,8 @@ public class Account {
 	@OneToMany(mappedBy = "account")
 	private List<Transaction> transactions = new ArrayList<>();
 
-
 	@ManyToMany(mappedBy = "accounts")
 	private List<User> users = new ArrayList<>();
-	
 
 	public Long getAccountId() {
 		return accountId;

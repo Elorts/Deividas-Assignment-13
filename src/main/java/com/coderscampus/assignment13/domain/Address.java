@@ -32,17 +32,6 @@ public class Address {
 	@Column(length=15)
 	private String zipCode;
 
-//	public Address(Long userId, User user, String addressLine1, String addressLine2, String city, String region, String country, String zipCode) {
-//		this.userId = userId;
-//		this.user = user;
-//		this.addressLine1 = addressLine1;
-//		this.addressLine2 = addressLine2;
-//		this.city = city;
-//		this.region = region;
-//		this.country = country;
-//		this.zipCode = zipCode;
-//	}
-
 	public Address() {}
 
 	public Long getUserId() {
@@ -52,11 +41,11 @@ public class Address {
 	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
-	
 
 	public User getUser() {
 		return user;
 	}
+
 	public void setUser(User user) {
 		this.user = user;
 	}
@@ -64,6 +53,7 @@ public class Address {
 	public String getAddressLine1() {
 		return addressLine1;
 	}
+
 	public void setAddressLine1(String addressLine1) {
 		this.addressLine1 = addressLine1;
 	}
@@ -71,6 +61,7 @@ public class Address {
 	public String getAddressLine2() {
 		return addressLine2;
 	}
+
 	public void setAddressLine2(String addressLine2) {
 		this.addressLine2 = addressLine2;
 	}
@@ -78,6 +69,7 @@ public class Address {
 	public String getCity() {
 		return city;
 	}
+
 	public void setCity(String city) {
 		this.city = city;
 	}
@@ -85,6 +77,7 @@ public class Address {
 	public String getRegion() {
 		return region;
 	}
+
 	public void setRegion(String region) {
 		this.region = region;
 	}
@@ -92,6 +85,7 @@ public class Address {
 	public String getCountry() {
 		return country;
 	}
+
 	public void setCountry(String country) {
 		this.country = country;
 	}
@@ -99,6 +93,7 @@ public class Address {
 	public String getZipCode() {
 		return zipCode;
 	}
+
 	public void setZipCode(String zipCode) {
 		this.zipCode = zipCode;
 	}
