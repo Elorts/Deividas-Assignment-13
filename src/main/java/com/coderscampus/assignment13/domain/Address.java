@@ -32,6 +32,18 @@ public class Address {
 	@Column(length=15)
 	private String zipCode;
 
+//	public Address(Long userId, User user, String addressLine1, String addressLine2, String city, String region, String country, String zipCode) {
+//		this.userId = userId;
+//		this.user = user;
+//		this.addressLine1 = addressLine1;
+//		this.addressLine2 = addressLine2;
+//		this.city = city;
+//		this.region = region;
+//		this.country = country;
+//		this.zipCode = zipCode;
+//	}
+
+	public Address() {}
 
 	public Long getUserId() {
 		return userId;

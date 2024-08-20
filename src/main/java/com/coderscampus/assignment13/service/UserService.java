@@ -57,7 +57,7 @@ public class UserService {
 		return userOpt.orElse(new User());
 	}
 
-	public User saveNewUser(User user, Address address) {
+	public User saveNewUser(User user) {
 
 		Account checking = new Account();
 		checking.setAccountName("Checking Account");
@@ -74,6 +74,8 @@ public class UserService {
 		accountRepo.save(savings);
 
 		userRepo.save(user);
+
+		Address address = new Address();
 
 		address.setUser(user);
 		user.setAddress(address);
