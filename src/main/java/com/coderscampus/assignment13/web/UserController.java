@@ -43,7 +43,7 @@ public class UserController {
 
 
 
-		userService.saveNewUser(user, address);
+		userService.saveNewUser(user);
 		return "redirect:/register";
 	}
 
