@@ -13,7 +13,6 @@ public class AddressService {
     private AddressRepository addressRepo;
 
     public Address getAddress (Long userId) {
-
         return addressRepo.getOne(userId);
     }
 

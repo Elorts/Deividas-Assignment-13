@@ -1,7 +1,6 @@
 package com.coderscampus.assignment13.domain;
 
 import java.time.LocalDateTime;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,7 +26,6 @@ public class Transaction {
 	@ManyToOne
 	@JoinColumn(name="account_id")
 	private Account account;
-	
 
 	public Long getTransactionId() {
 		return transactionId;
@@ -47,14 +45,12 @@ public class Transaction {
 	public void setAmount(Double amount) {
 		this.amount = amount;
 	}
-
 	public String getType() {
 		return type;
 	}
 	public void setType(String type) {
 		this.type = type;
 	}
-
 	public Account getAccount() {
 		return account;
 	}

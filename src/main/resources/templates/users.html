@@ -5,7 +5,6 @@
 	</head>
 	<body>
 		<h1>Users</h1>
-		
 		<div th:if="${#lists.size(users) == 1}">
 			<form action="" method="post">
 				<div>
@@ -44,37 +43,23 @@
 					<input type="submit" value="Update User Account" />
 				</div>
 			</form>
-
-
 			<form th:action="@{/users/{userId}/delete(userId=${user.userId})}" method="post">
 				<input type="submit" value="Delete User Account" />
 			</form>
-
 			<hr/>
-
 			<p><h2>Accounts</h2></p>
-
 			<div th:each="account : ${user.accounts}">
 				<a th:href="@{/users/{userId}/accounts/{accountId} (userId=${user.userId}, accountId=${account.accountId})}"> [[${account.accountName}]] </a>
-
 			</div>
-
 			<div>
 				<form th:action="@{/users/{userId}/accounts (userId=${user.userId})}" method="post">
 					<input type="submit" value="Create New Bank Account" />
 			</div>
-
 			<br/>
-
-<!--			<a href="#" onclick="history.back()">Go Back</a>-->
 			<a th:href="@{/users/}"> Go Back </a>
-
-
 		</div>
 		<br/>
-
 		<div th:unless="${#lists.size(users) == 1}" th:each="user : ${users}">
-
 			<a th:href="@{/users/{userId}(userId=${user.userId})}"> [[${user.userId}]] </a>
 			<br>
 			<span th:text="${user.username}"></span><br/>

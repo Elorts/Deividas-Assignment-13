@@ -28,14 +28,17 @@ public class AccountService {
     public long createAccount(Long userId) {
         User user = new User();
         user = userRepo.getOne(userId);
+
         Integer numberOfAccounts = user.getAccounts().size() + 1;
         Account newAccount = new Account();
 
-
         newAccount.setAccountName("Account #" + numberOfAccounts);
         newAccount.getUsers().add(userRepo.getOne(userId));
+
         accountRepo.save(newAccount);
+
         user.getAccounts().add(newAccount);
+
         userRepo.save(user);
 
         return newAccount.getAccountId();
