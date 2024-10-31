@@ -31,12 +31,14 @@ public class UserController {
     @GetMapping("/register")
     public String getCreateUser(ModelMap model) {
         model.put("user", new User());
+
         return "register";
     }
 
     @PostMapping("/register")
     public String postCreateUser(User user) {
         userService.saveNewUser(user);
+
         return "redirect:/register";
     }
 
@@ -45,8 +47,25 @@ public class UserController {
         Set<User> users = userService.findAll();
 
         model.put("users", users);
+
         if (users.size() == 1) {
-            model.put("user", users.iterator().next());
+            User user = users.iterator().next();
+            Address address = user.getAddress();
+
+            model.put("user", user);
+
+            if (address != null) {
+                model.put("address", address);
+            } else {
+                Address defaultAddress = new Address();
+                defaultAddress.setAddressLine1(" ");
+                defaultAddress.setAddressLine2(" ");
+                defaultAddress.setCity(" ");
+                defaultAddress.setRegion(" ");
+                defaultAddress.setCountry(" ");
+                defaultAddress.setZipCode(" ");
+                model.put("address", defaultAddress);
+            }
         }
 
         return "users";
@@ -86,6 +105,7 @@ public class UserController {
     public String editAccount(@PathVariable Long userId, @PathVariable Long accountId, ModelMap model) {
         model.put("account", accountService.getAccount(accountId));
         model.put("userId", userId);
+
         return "account";
     }
 
@@ -98,7 +118,6 @@ public class UserController {
 
     @PostMapping("/users/{userId}/accounts")
     public String createAccount(@PathVariable Long userId) {
-        System.out.println("USER CONTROLLER, user id: " + userId);  // my test code
 
         return "redirect:/users/" + userId + "/accounts/" + accountService.createAccount(userId);
     }
