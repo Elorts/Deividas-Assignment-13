@@ -6,14 +6,12 @@
 	<body>
 		<h1>Users</h1>
 		<div th:if="${#lists.size(users) == 1}">
-			<form th:action="@{/users/{userId}(userId=${user.userId})}" th:object="${user}" method="post">
+			<form th:action="@{/users/{userId}(userId=${user.userId})}" method="post">
 				<div>
 					Username: <input type="text" th:field="${user.username}" />
 				</div>
 				<div>
-					Password: <input type="password" id="password" name="password" th:field="*{password}" />
-<!--					Password: <input type="password" th:field="${user.password}" />-->
-
+					Password: <input type="password" th:field="${user.password}" />
 
 				</div>
 				<div>

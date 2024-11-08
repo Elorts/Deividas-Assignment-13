@@ -93,9 +93,8 @@ public class UserController {
     }
 
     @PostMapping("/users/{userId}")
-    public String postOneUser(User user, Address address, Account account, @PathVariable Long userId, @RequestParam("password") String password) {
+    public String postOneUser(User user, Address address, Account account, @PathVariable Long userId) {
 
-        System.out.println("*-*****************************************" + password);
 
         userService.saveUser(user);
         addressService.saveAddress(address);
