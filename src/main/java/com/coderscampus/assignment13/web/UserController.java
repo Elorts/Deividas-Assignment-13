@@ -8,13 +8,10 @@ import com.coderscampus.assignment13.service.AddressService;
 import com.coderscampus.assignment13.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
@@ -31,6 +28,8 @@ public class UserController {
     @Autowired
     private AccountService accountService;
 
+    String originalPassword;
+
     @GetMapping("/register")
     public String getCreateUser(ModelMap model) {
         model.put("user", new User());
@@ -41,6 +40,7 @@ public class UserController {
     @PostMapping("/register")
     public String postCreateUser(User user) {
         userService.saveNewUser(user);
+        originalPassword = user.getPassword();
 
         return "redirect:/register";
     }
@@ -48,13 +48,11 @@ public class UserController {
     @GetMapping("/users")
     public String getAllUsers(ModelMap model) {
         Set<User> users = userService.findAll();
-
         model.put("users", users);
 
         if (users.size() == 1) {
             User user = users.iterator().next();
             Address address = user.getAddress();
-
             model.put("user", user);
 
             if (address != null) {
@@ -76,14 +74,9 @@ public class UserController {
 
     @GetMapping("/users/{userId}")
     public String getOneUser(ModelMap model, @PathVariable Long userId) {
-
-
-
         User user = userService.findById(userId);
         Address address = addressService.getAddress(userId);
         List<Account> accounts = user.getAccounts();
-
-        model.addAttribute("password", "");
         model.put("accounts", accounts);
         model.put("address", address);
         model.put("users", Arrays.asList(user));
@@ -95,6 +88,9 @@ public class UserController {
     @PostMapping("/users/{userId}")
     public String postOneUser(User user, Address address, Account account, @PathVariable Long userId) {
 
+        if (user.getPassword() == "") {
+            user.setPassword(originalPassword);
+        }
 
         userService.saveUser(user);
         addressService.saveAddress(address);
