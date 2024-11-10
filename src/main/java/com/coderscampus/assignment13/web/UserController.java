@@ -30,6 +30,20 @@ public class UserController {
 
     String originalPassword;
 
+    @GetMapping("/welcome")
+    public String getWelcome(ModelMap model) {
+        //model.put("user", new User());
+
+        return "welcome";
+    }
+
+    @GetMapping("/index")
+    public String getIndex(ModelMap model) {
+        //model.put("user", new User());
+
+        return "index";
+    }
+
     @GetMapping("/register")
     public String getCreateUser(ModelMap model) {
         model.put("user", new User());

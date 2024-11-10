@@ -1,0 +1,44 @@
+body {
+  margin: 0;
+  background-color: hsl(0, 0%, 98%);
+  color: #333;
+  font: 100% / normal sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Adjust height as needed */
+}
+
+main {
+  margin: 0 auto;
+  padding: 4rem 0;
+  width: 50%;
+  max-width: 60rem;
+}
+
+form {
+  box-sizing: border-box;
+  padding: 2rem;
+  border-radius: 1rem;
+  background-color: hsl(0, 0%, 100%);
+  border: 4px solid hsl(0, 0%, 90%);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center; /* Center items vertically */
+}
+
+.full-width {
+  grid-column: span 2;
+  display: flex; /* For centering text and buttons horizontally */
+  justify-content: center;
+}
+
+button {
+  margin: 10px;
+  padding: 10px 20px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+}
