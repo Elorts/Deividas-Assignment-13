@@ -7,9 +7,18 @@ body {
             50%{background-color:#3498db}
             75%{background-color:#9b59b6}
 */
+/*          old colors
+            0%{background-color:#4432a8}
+            25%{background-color:#325aa8}
+            50%{background-color:#3283a8}
+            75%{background-color:#325aa8}
+            100%{background-color:#4432a8}
+*/
+
             0%{background-color:#8B5DFF}
             25%{background-color:#6A42C2}
             50%{background-color:#563A9C}
             75%{background-color:#6A42C2}
             100%{background-color:#8B5DFF}
+
         }
