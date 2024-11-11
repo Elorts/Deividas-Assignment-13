@@ -6,8 +6,9 @@
 
 	</head>
 	<body>
+	<div class="frame">
 		<h1>Create Your Account</h1>
-		<form action="" method="post" class="frame">
+		<form action="" method="post">
 			<div>
 				Username: <input type="text" th:field="${user.username}" />
 			</div>
@@ -18,11 +19,13 @@
 				Full Name: <input type="text" th:field="${user.name}" />
 			</div>
 			<div>
-				<input type="submit" value="Create Account" />
+				<input type="submit" value="Create Account" class="big-button" />
 			</div>
 		</form>
+
 		<form th:action="@{/users}" method="get">
-			<button type="submit">Go to Users</button>
+			<button type="submit" class="big-button">Go to Users</button>
 		</form>
+	</div>
 	</body>
 </html>
