@@ -44,9 +44,9 @@ body {
 }
 
 button {
-            padding: 10px 20px;       /* Controls the space inside the button */
-            font-size: 16px;          /* Adjusts text size */
-            width: 150px;             /* Sets a fixed width */
-            height: 50px;             /* Sets a fixed height */
-            border-radius: 5px;       /* Adds rounded corners */
+    padding: 10px 20px;       /* Controls the space inside the button */
+    font-size: 16px;          /* Adjusts text size */
+    width: 150px;             /* Sets a fixed width */
+    height: 50px;             /* Sets a fixed height */
+    border-radius: 5px;       /* Adds rounded corners */
         }
