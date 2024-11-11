@@ -5,6 +5,7 @@
 		<link rel="stylesheet" href="styles.css"/>
 	</head>
 	<body>
+	<div class="frame">
 		<h1>Users</h1>
 		<div th:if="${#lists.size(users) == 1}">
 			<form th:action="@{/users/{userId}(userId=${user.userId})}" method="post">
@@ -72,5 +73,6 @@
 			</div>
 			<hr/>
 		</div>
+	</div>
 	</body>
 </html>

@@ -5,36 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Title</title>
     <link rel="stylesheet" href="styles.css"/>
-<!--    <style type="text/css">-->
-<!--        body {-->
-<!--            animation: change 10s infinite;-->
-<!--        }-->
-<!--        @keyframes change{-->
-<!--            0%{background-color:#1abc9c;}-->
-<!--            25%{background-color:#2ecc71;}-->
-<!--            50%{background-color:#3498db}-->
-<!--            75%{background-color:#9b59b6}-->
-<!--        }-->
-<!--    </style>-->
-
 </head>
 <body>
-    <div>
-        <div id="title">
-            Welcome to Banking Apllication
-        </div>
-        <div>
-            <div>
-                <form th:action="@{/register}" method="get">
-                    <button type="submit">Create User</button>
-                </form>
-            </div>
-            <div>
-                <form th:action="@{/users}" method="get">
-                    <button type="submit">User Page</button>
-                </form>
-            </div>
-        </div>
+<div class="frame">
+    <div id="title">
+        <p>
+            Welcome to Banking Application
+        </p>
     </div>
+    <div>
+        <form th:action="@{/register}" method="get">
+            <button type="submit">Create User</button>
+        </form>
+        <form th:action="@{/users}" method="get">
+            <button type="submit">User Page</button>
+        </form>
+    </div>
+</div>
 </body>
 </html>

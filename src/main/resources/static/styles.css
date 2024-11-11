@@ -14,11 +14,41 @@ body {
             75%{background-color:#325aa8}
             100%{background-color:#4432a8}
 */
-
+/*
             0%{background-color:#8B5DFF}
             25%{background-color:#6A42C2}
             50%{background-color:#563A9C}
             75%{background-color:#6A42C2}
             100%{background-color:#8B5DFF}
+*/
 
+            0%{background-color:#E5E4E2}
+            25%{background-color:#C0C0C0}
+            50%{background-color:#848884}
+            75%{background-color:#C0C0C0}
+            100%{background-color:#E5E4E2}
+        }
+
+.frame {
+
+    width: 50%;
+    margin-left: 25%;
+    margin-top: 100px;
+    text-align: center;
+    font-size: 3rem;
+    padding: 20px;
+    background-color: #ffffff;
+}
+
+.frame form {
+    display: inline-block; /* Keep forms inline to show buttons side by side */
+    margin: 0 5px; /* Optional: Adds spacing between the buttons */
+}
+
+button {
+            padding: 10px 20px;       /* Controls the space inside the button */
+            font-size: 16px;          /* Adjusts text size */
+            width: 150px;             /* Sets a fixed width */
+            height: 50px;             /* Sets a fixed height */
+            border-radius: 5px;       /* Adds rounded corners */
         }
