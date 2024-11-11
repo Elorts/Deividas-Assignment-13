@@ -1,6 +1,6 @@
 body {
-            animation: change 7s infinite;
-        }
+    animation: change 7s infinite;
+    }
         @keyframes change{
 /*            0%{background-color:#1abc9c;}
             25%{background-color:#2ecc71;}
@@ -30,7 +30,6 @@ body {
         }
 
 .frame {
-
     width: 50%;
     margin-left: 25%;
     margin-top: 100px;
