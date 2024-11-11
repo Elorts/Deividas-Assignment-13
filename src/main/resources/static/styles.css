@@ -1,7 +1,7 @@
 body {
     animation: change 7s infinite;
 }
-        @keyframes change{
+@keyframes change {
 /*            0%{background-color:#1abc9c;}
             25%{background-color:#2ecc71;}
             50%{background-color:#3498db}
@@ -21,12 +21,12 @@ body {
             75%{background-color:#6A42C2}
             100%{background-color:#8B5DFF}
 */
-            0%{background-color:#E5E4E2}
-            25%{background-color:#C0C0C0}
-            50%{background-color:#848884}
-            75%{background-color:#C0C0C0}
-            100%{background-color:#E5E4E2}
-        }
+    0%{background-color:#E5E4E2}
+    25%{background-color:#C0C0C0}
+    50%{background-color:#848884}
+    75%{background-color:#C0C0C0}
+    100%{background-color:#E5E4E2}
+}
 
 .frame {
     width: 50%;
