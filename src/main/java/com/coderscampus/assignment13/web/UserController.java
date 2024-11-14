@@ -28,11 +28,10 @@ public class UserController {
     @Autowired
     private AccountService accountService;
 
-    String originalPassword;
+    String placeholderPassword;
 
     @GetMapping("/welcome")
     public String getWelcome(ModelMap model) {
-        //model.put("user", new User());
 
         return "welcome";
     }
@@ -54,7 +53,6 @@ public class UserController {
     @PostMapping("/register")
     public String postCreateUser(User user) {
         userService.saveNewUser(user);
-        originalPassword = user.getPassword();
 
         return "redirect:/register";
     }
@@ -102,9 +100,20 @@ public class UserController {
     @PostMapping("/users/{userId}")
     public String postOneUser(User user, Address address, Account account, @PathVariable Long userId) {
 
-        if (user.getPassword() == "") {
-            user.setPassword(originalPassword);
+
+      //  System.out.println("PASSWORD FROM DB: " + userService.findById(userId).getPassword());
+
+//        System.out.println("user.getUpdatedPassword() postmapping after edit:" + user.getUpdatedPassword());
+        System.out.println("user.getPassword() after edit:" + user.getPassword());
+
+
+        if (user.getPassword().isEmpty()) {
+            System.out.println("user.getPassword() from view is empty SO WE ARE POPULATING IT WITH ONE FROM DB!");
+            user.setPassword(userService.findById(userId).getPassword());
+        } else {
+            System.out.println("CHANGED PASSWORD IN VIEW LEFT AS IS");
         }
+
 
         userService.saveUser(user);
         addressService.saveAddress(address);

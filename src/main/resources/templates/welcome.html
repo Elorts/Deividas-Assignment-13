@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Create Account</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+    <body>
+        <div class="frame">
+            <div id="title">
+                <h1>
+                    Welcome to Banking Application
+                </h1>
+                </p>
+            </div>
+            <div>
+                <p class="regular-text">
+                    This is an example of full stack app. It takes input from a user at
+                    front end (Html, Thymeleaf, JavaScript), sends information to the backend
+                    (Java, Spring) and saves it to a database (Hybernate, MySQL). It also allows
+                    to edit and delete information (full CRUD).
+                </p>
+            </div>
+            <div>
+                <form th:action="@{/register}" method="get">
+                    <button type="submit" class="big-button">Create User</button>
+                </form>
+                <form th:action="@{/users}" method="get">
+                    <button type="submit" class="big-button">User Page</button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
