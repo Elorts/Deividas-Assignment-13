@@ -6,6 +6,9 @@
 	<body>
 	<div class="frame">
 		<h1>Users</h1>
+
+
+
 		<div th:if="${#lists.size(users) == 1}">
 			<form th:action="@{/users/{userId}(userId=${user.userId})}" method="post">
 				<div>
@@ -60,7 +63,14 @@
 			<br/>
 			<a th:href="@{/users/}"> Go Back </a>
 		</div>
+
+
+
 		<br/>
+
+
+
+
 		<div th:unless="${#lists.size(users) == 1}" th:each="user : ${users}">
 			<a th:href="@{/users/{userId}(userId=${user.userId})}"> [[${user.userId}]] </a>
 			<br>

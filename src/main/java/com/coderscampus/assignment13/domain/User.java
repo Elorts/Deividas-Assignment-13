@@ -3,6 +3,7 @@ package com.coderscampus.assignment13.domain;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.*;
 
 @Entity
@@ -86,33 +87,28 @@ public class User {
     }
 
     @Override
-    public String toString() {
-        return "User [userId=" + userId + ", username=" + username + ", password=" + password + ", name=" + name
-                + ", accounts=" + accounts + ", address=" + address + "]";
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equals(userId, user.userId) && Objects.equals(username, user.username) && Objects.equals(password, user.password) && Objects.equals(name, user.name) && Objects.equals(createdDate, user.createdDate) && Objects.equals(accounts, user.accounts) && Objects.equals(address, user.address);
     }
 
     @Override
     public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((userId == null) ? 0 : userId.hashCode());
-        return result;
+        return Objects.hash(userId, username, password, name, createdDate, accounts, address);
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        User other = (User) obj;
-        if (userId == null) {
-            if (other.userId != null)
-                return false;
-        } else if (!userId.equals(other.userId))
-            return false;
-        return true;
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", name='" + name + '\'' +
+                ", createdDate=" + createdDate +
+                ", accounts=" + accounts +
+                ", address=" + address +
+                '}';
     }
 }
