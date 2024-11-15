@@ -6,7 +6,7 @@ import java.util.Objects;
 import javax.persistence.*;
 
 @Entity
-@Table(name="accounts")
+@Table(name = "accounts")
 public class Account {
 
 	@Id
@@ -25,6 +25,7 @@ public class Account {
 	public Long getAccountId() {
 		return accountId;
 	}
+
 	public void setAccountId(Long accountId) {
 		this.accountId = accountId;
 	}
@@ -32,6 +33,7 @@ public class Account {
 	public String getAccountName() {
 		return accountName;
 	}
+
 	public void setAccountName(String accountName) {
 		this.accountName = accountName;
 	}
@@ -39,6 +41,7 @@ public class Account {
 	public List<Transaction> getTransactions() {
 		return transactions;
 	}
+
 	public void setTransactions(List<Transaction> transactions) {
 		this.transactions = transactions;
 	}
@@ -46,6 +49,7 @@ public class Account {
 	public List<User> getUsers() {
 		return users;
 	}
+
 	public void setUsers(List<User> users) {
 		this.users = users;
 	}
@@ -55,7 +59,10 @@ public class Account {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
 		Account account = (Account) o;
-		return Objects.equals(accountId, account.accountId) && Objects.equals(accountName, account.accountName) && Objects.equals(transactions, account.transactions) && Objects.equals(users, account.users);
+		return Objects.equals(accountId, account.accountId) &&
+				Objects.equals(accountName, account.accountName) &&
+				Objects.equals(transactions, account.transactions) &&
+				Objects.equals(users, account.users);
 	}
 
 	@Override

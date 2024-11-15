@@ -29,28 +29,20 @@ public class UserController {
     private AccountService accountService;
 
     @GetMapping("/welcome")
-    public String getWelcome(ModelMap model) {
+    public String getWelcomeView(ModelMap model) {
 
         return "welcome";
     }
 
-    // Test endpoint
-    @GetMapping("/index")
-    public String getIndex(ModelMap model) {
-        //model.put("user", new User());
-
-        return "index";
-    }
-
     @GetMapping("/register")
-    public String getCreateUser(ModelMap model) {
+    public String getCreateUserView(ModelMap model) {
         model.put("user", new User());
 
         return "register";
     }
 
     @PostMapping("/register")
-    public String postCreateUser(User user) {
+    public String postCreatedUser(User user) {
         userService.saveNewUser(user);
 
         return "redirect:/register";
@@ -97,20 +89,19 @@ public class UserController {
     }
 
     @PostMapping("/user/{userId}")
-    public String postOneUser(User user, Address address, Account account, @PathVariable Long userId) {
+    public String postOneUser(User user, Address address) {
 
+        System.out.println("user id from view: " + user.getUserId());
 
-      //  System.out.println("PASSWORD FROM DB: " + userService.findById(userId).getPassword());
-
-//        System.out.println("user.getUpdatedPassword() postmapping after edit:" + user.getUpdatedPassword());
         System.out.println("user.getPassword() after edit:" + user.getPassword());
 
 
         if (user.getPassword().isEmpty()) {
             System.out.println("user.getPassword() from view is empty SO WE ARE POPULATING IT WITH ONE FROM DB!");
-            user.setPassword(userService.findById(userId).getPassword());
+            user.setPassword(userService.findById(user.getUserId()).getPassword());
         } else {
             System.out.println("CHANGED PASSWORD IN VIEW LEFT AS IS");
+            System.out.println("new password:" + user.getPassword());
         }
 
 
