@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head>
-		<title>Users</title>
-	</head>
-	<body>
-	<div class="frame">
-		<h1>Users</h1>
-		<div th:unless="${#lists.size(users) == 1}" th:each="user : ${users}">
-			<a th:href="@{/user/{userId}(userId=${user.userId})}"> [[${user.userId}]] </a>
-			<br>
-			<span th:text="${user.username}"></span><br/>
-			<span th:text="${user.name}"></span><br/>
-			<span th:text="${user.password}"></span>
-			<div th:each="account : ${user.accounts}">
-				<a th:href="@{/user/{userId}/accounts/{accountId} (userId=${user.userId}, accountId=${account.accountId})}"> [[${account.accountName}]] </a>
-			</div>
-			<hr/>
+<head>
+	<title>Users</title>
+</head>
+<body>
+<div class="frame">
+	<h1>Users</h1>
+
+	<div th:each="user : ${users}">
+		<a th:href="@{/user/{userId}(userId=${user.userId})}">[[${user.userId}]]</a><br>
+		<span th:text="${user.username}"></span><br>
+		<span th:text="${user.name}"></span><br>
+		<span th:text="${user.password}"></span><br>
+
+		<div th:each="account : ${user.accounts}">
+			<a th:href="@{/user/{userId}/accounts/{accountId} (userId=${user.userId}, accountId=${account.accountId})}">
+				[[${account.accountName}]]
+			</a>
 		</div>
+		<hr>
 	</div>
-	</body>
+</div>
+</body>
 </html>

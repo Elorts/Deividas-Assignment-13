@@ -7,62 +7,75 @@
 <body>
 <div class="frame">
     <h1>User</h1>
-<div>
+
     <form th:action="@{/user/{userId}(userId=${user.userId})}" method="post">
         <div>
-            Username: <input type="text" th:field="${user.username}" />
+            <label>Username:</label>
+            <input type="text" th:field="${user.username}" />
         </div>
         <div>
-            Password: <input type="password" th:field="${user.password}" />
+            <label>Password:</label>
+            <input type="password" th:field="${user.password}" />
+        </div>
+        <div>
+            <label>Full Name:</label>
+            <input type="text" th:field="${user.name}" />
+        </div>
 
-        </div>
-        <div>
-            Full Name: <input type="text" th:field="${user.name}" />
-        </div>
         <hr/>
+
         <div>
-            Address Line 1: <input type="text" th:field="${address.addressLine1}" />
+            <label>Address Line 1:</label>
+            <input type="text" th:field="${address.addressLine1}" />
         </div>
         <div>
-            Address Line 2: <input type="text" th:field="${address.addressLine2}" />
+            <label>Address Line 2:</label>
+            <input type="text" th:field="${address.addressLine2}" />
         </div>
         <div>
-            City: <input type="text" th:field="${address.city}" />
+            <label>City:</label>
+            <input type="text" th:field="${address.city}" />
         </div>
         <div>
-            Region: <input type="text" th:field="${address.region}" />
+            <label>Region:</label>
+            <input type="text" th:field="${address.region}" />
         </div>
         <div>
-            Country: <input type="text" th:field="${address.country}" />
+            <label>Country:</label>
+            <input type="text" th:field="${address.country}" />
         </div>
         <div>
-            Zip Code: <input type="text" th:field="${address.zipCode}" />
+            <label>Zip Code:</label>
+            <input type="text" th:field="${address.zipCode}" />
         </div>
-        <br>
-        <div>
-            <input type="hidden" th:field="${user.accounts}" />
-        </div>
+
+        <input type="hidden" th:field="${user.accounts}" />
+
         <div>
             <input type="submit" value="Update User Account" />
         </div>
     </form>
+
     <form th:action="@{/user/{userId}/delete(userId=${user.userId})}" method="post">
         <input type="submit" value="Delete User Account" />
     </form>
+
     <hr/>
-    <p><h2>Accounts</h2></p>
+
+    <h2>Accounts</h2>
     <div th:each="account : ${user.accounts}">
-        <a th:href="@{/user/{userId}/accounts/{accountId} (userId=${user.userId}, accountId=${account.accountId})}"> [[${account.accountName}]] </a>
+        <a th:href="@{/user/{userId}/accounts/{accountId} (userId=${user.userId}, accountId=${account.accountId})}">
+            [[${account.accountName}]]
+        </a>
     </div>
-    <div>
-        <form th:action="@{/user/{userId}/accounts (userId=${user.userId})}" method="post">
-            <input type="submit" value="Create New Bank Account" />
-    </div>
+
+    <form th:action="@{/user/{userId}/accounts (userId=${user.userId})}" method="post">
+        <input type="submit" value="Create New Bank Account" />
+    </form>
+
     <br/>
-    <a th:href="@{/users/}"> Go Back </a>
+
+    <a th:href="@{/users/}">Go Back</a>
 </div>
-
-
-
 </body>
 </html>

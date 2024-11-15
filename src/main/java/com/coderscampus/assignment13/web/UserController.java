@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Set;
 
 @Controller
@@ -29,22 +28,19 @@ public class UserController {
     private AccountService accountService;
 
     @GetMapping("/welcome")
-    public String getWelcomeView(ModelMap model) {
-
+    public String getWelcomeView() {
         return "welcome";
     }
 
     @GetMapping("/register")
     public String getCreateUserView(ModelMap model) {
         model.put("user", new User());
-
         return "register";
     }
 
     @PostMapping("/register")
     public String postCreatedUser(User user) {
         userService.saveNewUser(user);
-
         return "redirect:/register";
     }
 
@@ -61,14 +57,7 @@ public class UserController {
             if (address != null) {
                 model.put("address", address);
             } else {
-                Address defaultAddress = new Address();
-                defaultAddress.setAddressLine1(" ");
-                defaultAddress.setAddressLine2(" ");
-                defaultAddress.setCity(" ");
-                defaultAddress.setRegion(" ");
-                defaultAddress.setCountry(" ");
-                defaultAddress.setZipCode(" ");
-                model.put("address", defaultAddress);
+                model.put("address", createDefaultAddress());
             }
         }
 
@@ -79,35 +68,21 @@ public class UserController {
     public String getOneUser(ModelMap model, @PathVariable Long userId) {
         User user = userService.findById(userId);
         Address address = addressService.getAddress(userId);
-        List<Account> accounts = user.getAccounts();
-        model.put("accounts", accounts);
-        model.put("address", address);
-        model.put("users", Arrays.asList(user));
         model.put("user", user);
-
+        model.put("users", Arrays.asList(user));
+        model.put("address", address);
+        model.put("accounts", user.getAccounts());
         return "user";
     }
 
     @PostMapping("/user/{userId}")
     public String postOneUser(User user, Address address) {
-
-        System.out.println("user id from view: " + user.getUserId());
-
-        System.out.println("user.getPassword() after edit:" + user.getPassword());
-
-
         if (user.getPassword().isEmpty()) {
-            System.out.println("user.getPassword() from view is empty SO WE ARE POPULATING IT WITH ONE FROM DB!");
             user.setPassword(userService.findById(user.getUserId()).getPassword());
-        } else {
-            System.out.println("CHANGED PASSWORD IN VIEW LEFT AS IS");
-            System.out.println("new password:" + user.getPassword());
         }
-
 
         userService.saveUser(user);
         addressService.saveAddress(address);
-
         return "redirect:/user/" + user.getUserId();
     }
 
@@ -115,7 +90,6 @@ public class UserController {
     public String deleteOneUser(@PathVariable Long userId) {
         addressService.delete(userId);
         userService.delete(userId);
-
         return "redirect:/users";
     }
 
@@ -123,20 +97,29 @@ public class UserController {
     public String editAccount(@PathVariable Long userId, @PathVariable Long accountId, ModelMap model) {
         model.put("account", accountService.getAccount(accountId));
         model.put("userId", userId);
-
         return "account";
     }
 
     @PostMapping("/user/{userId}/accounts/{accountId}")
-    public String postAccount(Account account, User user) {
+    public String postAccount(Account account) {
         accountService.saveAccount(account);
-
         return "redirect:/user/{userId}/accounts/{accountId}";
     }
 
     @PostMapping("/user/{userId}/accounts")
     public String createAccount(@PathVariable Long userId) {
+        Long accountId = accountService.createAccount(userId);
+        return "redirect:/user/" + userId + "/accounts/" + accountId;
+    }
 
-        return "redirect:/user/" + userId + "/accounts/" + accountService.createAccount(userId);
+    private Address createDefaultAddress() {
+        Address address = new Address();
+        address.setAddressLine1(" ");
+        address.setAddressLine2(" ");
+        address.setCity(" ");
+        address.setRegion(" ");
+        address.setCountry(" ");
+        address.setZipCode(" ");
+        return address;
     }
 }
