@@ -28,14 +28,13 @@ public class UserController {
     @Autowired
     private AccountService accountService;
 
-    String placeholderPassword;
-
     @GetMapping("/welcome")
     public String getWelcome(ModelMap model) {
 
         return "welcome";
     }
 
+    // Test endpoint
     @GetMapping("/index")
     public String getIndex(ModelMap model) {
         //model.put("user", new User());
@@ -84,7 +83,7 @@ public class UserController {
         return "users";
     }
 
-    @GetMapping("/users/{userId}")
+    @GetMapping("/user/{userId}")
     public String getOneUser(ModelMap model, @PathVariable Long userId) {
         User user = userService.findById(userId);
         Address address = addressService.getAddress(userId);
@@ -94,10 +93,10 @@ public class UserController {
         model.put("users", Arrays.asList(user));
         model.put("user", user);
 
-        return "users";
+        return "user";
     }
 
-    @PostMapping("/users/{userId}")
+    @PostMapping("/user/{userId}")
     public String postOneUser(User user, Address address, Account account, @PathVariable Long userId) {
 
 
@@ -118,10 +117,10 @@ public class UserController {
         userService.saveUser(user);
         addressService.saveAddress(address);
 
-        return "redirect:/users/" + user.getUserId();
+        return "redirect:/user/" + user.getUserId();
     }
 
-    @PostMapping("/users/{userId}/delete")
+    @PostMapping("/user/{userId}/delete")
     public String deleteOneUser(@PathVariable Long userId) {
         addressService.delete(userId);
         userService.delete(userId);
@@ -129,7 +128,7 @@ public class UserController {
         return "redirect:/users";
     }
 
-    @GetMapping("/users/{userId}/accounts/{accountId}")
+    @GetMapping("/user/{userId}/accounts/{accountId}")
     public String editAccount(@PathVariable Long userId, @PathVariable Long accountId, ModelMap model) {
         model.put("account", accountService.getAccount(accountId));
         model.put("userId", userId);
@@ -137,16 +136,16 @@ public class UserController {
         return "account";
     }
 
-    @PostMapping("/users/{userId}/accounts/{accountId}")
+    @PostMapping("/user/{userId}/accounts/{accountId}")
     public String postAccount(Account account, User user) {
         accountService.saveAccount(account);
 
-        return "redirect:/users/{userId}/accounts/{accountId}";
+        return "redirect:/user/{userId}/accounts/{accountId}";
     }
 
-    @PostMapping("/users/{userId}/accounts")
+    @PostMapping("/user/{userId}/accounts")
     public String createAccount(@PathVariable Long userId) {
 
-        return "redirect:/users/" + userId + "/accounts/" + accountService.createAccount(userId);
+        return "redirect:/user/" + userId + "/accounts/" + accountService.createAccount(userId);
     }
 }

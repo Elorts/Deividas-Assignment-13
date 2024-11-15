@@ -1,84 +1,19 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<title>Users</title>
 	</head>
 	<body>
 	<div class="frame">
 		<h1>Users</h1>
-
-
-
-		<div th:if="${#lists.size(users) == 1}">
-			<form th:action="@{/users/{userId}(userId=${user.userId})}" method="post">
-				<div>
-					Username: <input type="text" th:field="${user.username}" />
-				</div>
-				<div>
-					Password: <input type="password" th:field="${user.password}" />
-
-				</div>
-				<div>
-					Full Name: <input type="text" th:field="${user.name}" />
-				</div>
-				<hr/>
-				<div>
-					Address Line 1: <input type="text" th:field="${address.addressLine1}" />
-				</div>
-				<div>
-					Address Line 2: <input type="text" th:field="${address.addressLine2}" />
-				</div>
-				<div>
-					City: <input type="text" th:field="${address.city}" />
-				</div>
-				<div>
-					Region: <input type="text" th:field="${address.region}" />
-				</div>
-				<div>
-					Country: <input type="text" th:field="${address.country}" />
-				</div>
-				<div>
-					Zip Code: <input type="text" th:field="${address.zipCode}" />
-				</div>
-				<br>
-				<div>
-					<input type="hidden" th:field="${user.accounts}" />
-				</div>
-				<div>
-					<input type="submit" value="Update User Account" />
-				</div>
-			</form>
-			<form th:action="@{/users/{userId}/delete(userId=${user.userId})}" method="post">
-				<input type="submit" value="Delete User Account" />
-			</form>
-			<hr/>
-			<p><h2>Accounts</h2></p>
-			<div th:each="account : ${user.accounts}">
-				<a th:href="@{/users/{userId}/accounts/{accountId} (userId=${user.userId}, accountId=${account.accountId})}"> [[${account.accountName}]] </a>
-			</div>
-			<div>
-				<form th:action="@{/users/{userId}/accounts (userId=${user.userId})}" method="post">
-					<input type="submit" value="Create New Bank Account" />
-			</div>
-			<br/>
-			<a th:href="@{/users/}"> Go Back </a>
-		</div>
-
-
-
-		<br/>
-
-
-
-
 		<div th:unless="${#lists.size(users) == 1}" th:each="user : ${users}">
-			<a th:href="@{/users/{userId}(userId=${user.userId})}"> [[${user.userId}]] </a>
+			<a th:href="@{/user/{userId}(userId=${user.userId})}"> [[${user.userId}]] </a>
 			<br>
 			<span th:text="${user.username}"></span><br/>
 			<span th:text="${user.name}"></span><br/>
 			<span th:text="${user.password}"></span>
 			<div th:each="account : ${user.accounts}">
-				<a th:href="@{/users/{userId}/accounts/{accountId} (userId=${user.userId}, accountId=${account.accountId})}"> [[${account.accountName}]] </a>
+				<a th:href="@{/user/{userId}/accounts/{accountId} (userId=${user.userId}, accountId=${account.accountId})}"> [[${account.accountName}]] </a>
 			</div>
 			<hr/>
 		</div>
