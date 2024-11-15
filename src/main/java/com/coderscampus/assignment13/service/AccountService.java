@@ -11,14 +11,13 @@ import org.springframework.stereotype.Service;
 public class AccountService {
 
     @Autowired
-    AccountRepository accountRepo;
+    private AccountRepository accountRepo;
 
     @Autowired
-    UserRepository userRepo;
+    private UserRepository userRepo;
 
     public Account getAccount(Long accountId) {
-
-        return accountRepo.getOne(accountId);
+        return accountRepo.findById(accountId).orElse(null);
     }
 
     public void saveAccount(Account account) {
@@ -26,22 +25,21 @@ public class AccountService {
     }
 
     public long createAccount(Long userId) {
-        User user = new User();
-        user = userRepo.getOne(userId);
+        User user = userRepo.findById(userId).orElse(null);
+        if (user == null) {
+            throw new IllegalArgumentException("User not found with ID: " + userId);
+        }
 
-        Integer numberOfAccounts = user.getAccounts().size() + 1;
+        int numberOfAccounts = user.getAccounts().size() + 1;
         Account newAccount = new Account();
-
         newAccount.setAccountName("Account #" + numberOfAccounts);
-        newAccount.getUsers().add(userRepo.getOne(userId));
+        newAccount.getUsers().add(user);
 
         accountRepo.save(newAccount);
 
         user.getAccounts().add(newAccount);
-
         userRepo.save(user);
 
         return newAccount.getAccountId();
     }
-
 }

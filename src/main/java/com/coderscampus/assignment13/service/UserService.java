@@ -1,17 +1,14 @@
 package com.coderscampus.assignment13.service;
 
-import java.time.LocalDate;
-import java.util.*;
-
+import java.util.Set;
 import com.coderscampus.assignment13.domain.Address;
-import com.coderscampus.assignment13.repository.AddressRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.coderscampus.assignment13.domain.Account;
 import com.coderscampus.assignment13.domain.User;
+import com.coderscampus.assignment13.repository.AddressRepository;
 import com.coderscampus.assignment13.repository.AccountRepository;
 import com.coderscampus.assignment13.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Service
 public class UserService {
@@ -25,40 +22,15 @@ public class UserService {
     @Autowired
     private AddressRepository addressRepo;
 
-    @Autowired
-    private AddressService addressService;
-
-    public List<User> findByUsername(String username) {
-        return userRepo.findByUsername(username);
-    }
-
-    public List<User> findByNameAndUsername(String name, String username) {
-        return userRepo.findByNameAndUsername(name, username);
-    }
-
-    public List<User> findByCreatedDateBetween(LocalDate date1, LocalDate date2) {
-        return userRepo.findByCreatedDateBetween(date1, date2);
-    }
-
-    public User findExactlyOneUserByUsername(String username) {
-        List<User> users = userRepo.findExactlyOneUserByUsername(username);
-        if (users.size() > 0)
-            return users.get(0);
-        else
-            return new User();
-    }
-
     public Set<User> findAll() {
         return userRepo.findAllUsersWithAccountsAndAddresses();
     }
 
     public User findById(Long userId) {
-        Optional<User> userOpt = userRepo.findById(userId);
-        return userOpt.orElse(new User());
+        return userRepo.findById(userId).orElse(new User());
     }
 
     public User saveNewUser(User user) {
-
         Account checking = new Account();
         checking.setAccountName("Checking Account");
         checking.getUsers().add(user);
@@ -72,22 +44,19 @@ public class UserService {
 
         accountRepo.save(checking);
         accountRepo.save(savings);
-
         userRepo.save(user);
 
         Address address = new Address();
-
         address.setUser(user);
         user.setAddress(address);
 
         addressRepo.save(address);
 
-        return null;
+        return user;
     }
 
     public User saveUser(User user) {
-        userRepo.save(user);
-        return null;
+        return userRepo.save(user);
     }
 
     public void delete(Long userId) {
