@@ -3,7 +3,6 @@ package com.coderscampus.assignment13.service;
 import com.coderscampus.assignment13.domain.Account;
 import com.coderscampus.assignment13.domain.User;
 import com.coderscampus.assignment13.repository.AccountRepository;
-import com.coderscampus.assignment13.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +13,7 @@ public class AccountService {
     private AccountRepository accountRepo;
 
     @Autowired
-    private UserRepository userRepo;
+    private UserService userService;
 
     public Account getAccount(Long accountId) {
         return accountRepo.findById(accountId).orElse(null);
@@ -25,7 +24,7 @@ public class AccountService {
     }
 
     public long createAccount(Long userId) {
-        User user = userRepo.findById(userId).orElse(null);
+        User user = userService.findById(userId);
         if (user == null) {
             throw new IllegalArgumentException("User not found with ID: " + userId);
         }
@@ -38,7 +37,7 @@ public class AccountService {
         accountRepo.save(newAccount);
 
         user.getAccounts().add(newAccount);
-        userRepo.save(user);
+        userService.saveUser(user);
 
         return newAccount.getAccountId();
     }
