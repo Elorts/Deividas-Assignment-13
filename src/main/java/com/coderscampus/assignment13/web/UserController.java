@@ -18,14 +18,15 @@ import java.util.Set;
 @Controller
 public class UserController {
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
+    private final AddressService addressService;
+    private final AccountService accountService;
 
-    @Autowired
-    private AddressService addressService;
-
-    @Autowired
-    private AccountService accountService;
+    public UserController(UserService userService, AddressService addressService, AccountService accountService) {
+        this.userService = userService;
+        this.addressService = addressService;
+        this.accountService = accountService;
+    }
 
     @GetMapping("/welcome")
     public String getWelcomeView() {
