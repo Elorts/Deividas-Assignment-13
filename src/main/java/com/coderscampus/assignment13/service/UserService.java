@@ -4,8 +4,6 @@ import java.util.Set;
 import com.coderscampus.assignment13.domain.Address;
 import com.coderscampus.assignment13.domain.Account;
 import com.coderscampus.assignment13.domain.User;
-import com.coderscampus.assignment13.repository.AddressRepository;
-import com.coderscampus.assignment13.repository.AccountRepository;
 import com.coderscampus.assignment13.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,10 +15,11 @@ public class UserService {
     private UserRepository userRepo;
 
     @Autowired
-    private AccountRepository accountRepo;
+    private AccountService accountService;
 
     @Autowired
-    private AddressRepository addressRepo;
+    private AddressService addressService;
+
 
     public Set<User> findAll() {
         return userRepo.findAllUsersWithAccountsAndAddresses();
@@ -42,15 +41,16 @@ public class UserService {
         user.getAccounts().add(checking);
         user.getAccounts().add(savings);
 
-        accountRepo.save(checking);
-        accountRepo.save(savings);
+        accountService.saveAccount(checking);
+        accountService.saveAccount(savings);
+
         userRepo.save(user);
 
         Address address = new Address();
         address.setUser(user);
         user.setAddress(address);
 
-        addressRepo.save(address);
+        addressService.saveAddress(address);
 
         return user;
     }
