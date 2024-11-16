@@ -62,7 +62,7 @@ h2 {
 }
 
 .frame {
-box-shadow: 10px 5px 5px grey;
+box-shadow: 10px 5px 5px #ADD8E6;
     width: 50%;
     margin-left: 25%;
     margin-top: 100px;
@@ -71,7 +71,7 @@ box-shadow: 10px 5px 5px grey;
     background-color: #ffffff;
 }
 
-.frame form {
+.side-by {
     display: inline-block; /* Keep forms inline to show buttons side by side */
     margin: 0 5px; /* Optional: Adds spacing between the buttons */
 }
@@ -82,8 +82,9 @@ box-shadow: 10px 5px 5px grey;
     width: 150px;             /* Sets a fixed width */
     height: 50px;             /* Sets a fixed height */
     border-radius: 5px;       /* Adds rounded corners */
+    background-color: #ADD8E6;
         }
 
 .regular-text {
-    font-size: 2rem;
+    font-size: 1rem;
 }

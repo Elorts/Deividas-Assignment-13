@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>User</title>
+    <link rel="stylesheet" th:href="@{/styles.css}">
 </head>
 <body>
 <div class="frame">
     <h1>User</h1>
-
     <form th:action="@{/user/{userId}(userId=${user.userId})}" method="post">
         <div>
             <label>Username:</label>
@@ -52,30 +52,32 @@
         <input type="hidden" th:field="${user.accounts}" />
 
         <div>
-            <input type="submit" value="Update User Account" />
+            <input class="big-button" type="submit" value="Update User" />
         </div>
     </form>
 
     <form th:action="@{/user/{userId}/delete(userId=${user.userId})}" method="post">
-        <input type="submit" value="Delete User Account" />
+        <input class="big-button" type="submit" value="Delete User" />
     </form>
 
     <hr/>
 
-    <h2>Accounts</h2>
+    <h1>Accounts</h1>
     <div th:each="account : ${user.accounts}">
         <a th:href="@{/user/{userId}/accounts/{accountId} (userId=${user.userId}, accountId=${account.accountId})}">
             [[${account.accountName}]]
         </a>
     </div>
 
-    <form th:action="@{/user/{userId}/accounts (userId=${user.userId})}" method="post">
-        <input type="submit" value="Create New Bank Account" />
+    <form class="side-by" th:action="@{/user/{userId}/accounts (userId=${user.userId})}" method="post">
+        <input class="big-button" type="submit" value="Create Account" />
     </form>
 
     <br/>
 
-    <a th:href="@{/users/}">Go Back</a>
+    <form class="side-by" th:action="@{/users}" method="get" >
+        <button type="submit" class="big-button">User Page</button>
+    </form>
 </div>
 </body>
 </html>
