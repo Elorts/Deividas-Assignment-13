@@ -10,52 +10,55 @@
     <h1>User</h1>
     <form th:action="@{/user/{userId}(userId=${user.userId})}" method="post">
         <div>
-            <label>Username:</label>
-            <input type="text" th:field="${user.username}" />
+            <label>Username:</label><br>
+            <input type="text" th:field="${user.username}" /><br><br>
         </div>
         <div>
-            <label>Password:</label>
-            <input type="password" th:field="${user.password}" />
+            <label>Password:</label><br>
+            <input type="password" th:field="${user.password}" /><br><br>
         </div>
         <div>
-            <label>Full Name:</label>
-            <input type="text" th:field="${user.name}" />
+            <label>Full Name:</label><br>
+            <input type="text" th:field="${user.name}" /><br><br>
         </div>
 
         <hr/>
 
-        <div>
-            <label>Address Line 1:</label>
-            <input type="text" th:field="${address.addressLine1}" />
-        </div>
-        <div>
-            <label>Address Line 2:</label>
-            <input type="text" th:field="${address.addressLine2}" />
-        </div>
-        <div>
-            <label>City:</label>
-            <input type="text" th:field="${address.city}" />
-        </div>
-        <div>
-            <label>Region:</label>
-            <input type="text" th:field="${address.region}" />
-        </div>
-        <div>
-            <label>Country:</label>
-            <input type="text" th:field="${address.country}" />
-        </div>
-        <div>
-            <label>Zip Code:</label>
-            <input type="text" th:field="${address.zipCode}" />
-        </div>
+        <p>
+            <div>
+                <label>Address Line 1:</label><br>
+                <input type="text" th:field="${address.addressLine1}" /><br><br>
+            </div>
+            <div>
+                <label>Address Line 2:</label><br>
+                <input type="text" th:field="${address.addressLine2}" /><br><br>
+            </div>
+            <div>
+                <label>City:</label><br>
+                <input type="text" th:field="${address.city}" /><br><br>
+            </div>
+            <div>
+                <label>Region:</label><br>
+                <input type="text" th:field="${address.region}" /><br><br>
+            </div>
+            <div>
+                <label>Country:</label><br>
+                <input type="text" th:field="${address.country}" /><br><br>
+            </div>
+            <div>
+                <label>Zip Code:</label><br>
+                <input type="text" th:field="${address.zipCode}" /><br><br>
+            </div>
 
-        <input type="hidden" th:field="${user.accounts}" />
+            <input type="hidden" th:field="${user.accounts}" />
+
+        </p>
 
         <div>
             <input class="big-button" type="submit" value="Update User" />
         </div>
     </form>
-
+    <br>
     <form th:action="@{/user/{userId}/delete(userId=${user.userId})}" method="post">
         <input class="big-button" type="submit" value="Delete User" />
     </form>
@@ -68,16 +71,19 @@
             [[${account.accountName}]]
         </a>
     </div>
+    <p>
+        <div>
+            <form class="side-by-side" th:action="@{/user/{userId}/accounts (userId=${user.userId})}" method="post">
+                <input class="big-button" type="submit" value="Create Account" />
+            </form>
 
-    <form class="side-by" th:action="@{/user/{userId}/accounts (userId=${user.userId})}" method="post">
-        <input class="big-button" type="submit" value="Create Account" />
-    </form>
+            <br/>
 
-    <br/>
-
-    <form class="side-by" th:action="@{/users}" method="get" >
-        <button type="submit" class="big-button">User Page</button>
-    </form>
+            <form class="side-by-side" th:action="@{/users}" method="get" >
+                <button type="submit" class="big-button">User Page</button>
+            </form>
+        </div>
+    </p>
 </div>
 </body>
 </html>

@@ -27,8 +27,8 @@ h2 {
 
 .frame {
 box-shadow: 10px 5px 5px #ADD8E6;
-    width: 50%;
-    margin-left: 25%;
+    width: 30%;  /* 50% */
+    margin-left: 35%; /*25%;*/
     margin-top: 100px;
     text-align: center;
     padding: 20px;
@@ -52,3 +52,4 @@ box-shadow: 10px 5px 5px #ADD8E6;
 .regular-text {
     font-size: 1rem;
 }
+
