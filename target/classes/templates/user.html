@@ -8,7 +8,7 @@
 <body>
 <div class="frame">
     <h1>User</h1>
-    <form th:action="@{/user/{userId}(userId=${user.userId})}" method="post">
+    <form id="user-edit-form"  th:action="@{/user/{userId}(userId=${user.userId})}" method="post">
         <div>
             <label>Username:</label><br>
             <input type="text" th:field="${user.username}" /><br><br>
@@ -50,14 +50,21 @@
                 <input type="text" th:field="${address.zipCode}" /><br><br>
             </div>
 
-            <input type="hidden" th:field="${user.accounts}" />
+            <input type="hidden" th:field="${accounts}" />
 
         </p>
 
         <div>
-            <input class="big-button" type="submit" value="Update User" />
+            <input class="big-button" type="submit" value="Update User" onclick="showConfirmationPopup()"/>
         </div>
     </form>
+
+    <script>
+        function showConfirmationPopup() {
+            alert("Form submitted successfully!");
+            document.getElementById("user-edit-form").submit();
+        }
+    </script>
     <br>
     <form th:action="@{/user/{userId}/delete(userId=${user.userId})}" method="post">
         <input class="big-button" type="submit" value="Delete User" />
