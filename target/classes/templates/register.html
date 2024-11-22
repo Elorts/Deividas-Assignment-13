@@ -3,31 +3,30 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Create Account</title>
+	<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <div class="frame">
 	<h1>Create Your Account</h1>
 
-	<form action="" method="post">
+	<form class="regular-text" action="" method="post">
+        <p>
 		<div>
-			<label>Username:</label>
-			<input type="text" th:field="${user.username}" />
+			<label>Username:</label><br>
+			<input type="text" th:field="${user.username}" /><br><br>
 		</div>
 		<div>
-			<label>Password:</label>
-			<input type="password" th:field="${user.password}" />
+			<label>Password:</label><br>
+			<input type="password" th:field="${user.password}" /><br><br>
 		</div>
 		<div>
-			<label>Full Name:</label>
-			<input type="text" th:field="${user.name}" />
+			<label>Full Name:</label><br>
+			<input type="text" th:field="${user.name}" /><br><br>
 		</div>
+        </p>
 		<div>
 			<input type="submit" value="Create Account" class="big-button" />
 		</div>
-	</form>
-
-	<form th:action="@{/users}" method="get">
-		<button type="submit" class="big-button">Go to Users</button>
 	</form>
 </div>
 </body>

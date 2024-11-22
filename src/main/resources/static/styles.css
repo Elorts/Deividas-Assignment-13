@@ -1,40 +1,3 @@
-/*
-body {
-    animation: change 7s infinite;
-}
-@keyframes change {
-*/
-
-
-/*            0%{background-color:#1abc9c;}
-            25%{background-color:#2ecc71;}
-            50%{background-color:#3498db}
-            75%{background-color:#9b59b6}
-*/
-/*          old colors
-            0%{background-color:#4432a8}
-            25%{background-color:#325aa8}
-            50%{background-color:#3283a8}
-            75%{background-color:#325aa8}
-            100%{background-color:#4432a8}
-*/
-/*
-            0%{background-color:#8B5DFF}
-            25%{background-color:#6A42C2}
-            50%{background-color:#563A9C}
-            75%{background-color:#6A42C2}
-            100%{background-color:#8B5DFF}
-*/
-/*
-    0%{background-color:#E5E4E2}
-    25%{background-color:#C0C0C0}
-    50%{background-color:#848884}
-    75%{background-color:#C0C0C0}
-    100%{background-color:#E5E4E2}
-
-}
-*/
-
 html, body {
   width: 100%;
   height:100%;
@@ -63,16 +26,16 @@ h2 {
 }
 
 .frame {
-box-shadow: 10px 5px 5px grey;
-    width: 50%;
-    margin-left: 25%;
+box-shadow: 10px 5px 5px #ADD8E6;
+    width: 30%;  /* 50% */
+    margin-left: 35%; /*25%;*/
     margin-top: 100px;
     text-align: center;
     padding: 20px;
     background-color: #ffffff;
 }
 
-.frame form {
+.side-by {
     display: inline-block; /* Keep forms inline to show buttons side by side */
     margin: 0 5px; /* Optional: Adds spacing between the buttons */
 }
@@ -83,8 +46,10 @@ box-shadow: 10px 5px 5px grey;
     width: 150px;             /* Sets a fixed width */
     height: 50px;             /* Sets a fixed height */
     border-radius: 5px;       /* Adds rounded corners */
+    background-color: #ADD8E6;
         }
 
 .regular-text {
-    font-size: 2rem;
+    font-size: 1rem;
 }
+

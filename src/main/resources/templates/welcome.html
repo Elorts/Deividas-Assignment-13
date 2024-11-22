@@ -11,16 +11,16 @@
     </div>
     <div>
         <p class="regular-text">
-            This is a full-stack application example. It accepts input from the user at the front end (HTML, Thymeleaf, JavaScript, and cheap CSS graphics :)),
+            This is a full-stack application example. It accepts input from the user at the front end (HTML, CSS, Thymeleaf, and JavaScript),
             sends the data to the back end (Java, Spring), and saves it to a database (Hibernate, MySQL). The application also
             allows for editing and deletion of information, supporting full CRUD operations.
         </p>
     </div>
     <div>
-        <form th:action="@{/register}" method="get">
+        <form th:action="@{/register}" method="get" class="side-by">
             <button type="submit" class="big-button">Create User</button>
         </form>
-        <form th:action="@{/users}" method="get">
+        <form th:action="@{/users}" method="get" class="side-by">
             <button type="submit" class="big-button">User Page</button>
         </form>
     </div>

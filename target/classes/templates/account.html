@@ -2,22 +2,30 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Edit Account</title>
+    <link rel="stylesheet" th:href="@{/styles.css}">
 </head>
 <body>
-<h2 th:text="${account.accountName}"></h2>
+<div class="frame">
+    <h1 th:text="${account.accountName}"></h1>
 
-<form action="" method="post">
-    <div>
-        <label for="accountName">Account Name:</label>
-        <input type="text" id="accountName" th:field="${account.accountName}" />
-    </div>
-    <div>
-        <input type="submit" value="Save Account" />
-    </div>
-</form>
+    <form class="regular-text" action="" method="post">
+        <p>
+            <div>
+                <label for="accountName">Account Name:</label><br>
+                <input type="text" id="accountName" th:field="${account.accountName}" />
+            </div>
+        </p>
+        <div>
+            <input class="big-button" type="submit" value="Save Account" />
+        </div>
+    </form>
 
-<hr />
+    <hr />
 
-<a th:href="@{/user/{userId}(userId=${userId})}">Go Back</a>
+    <form th:action="@{/user/{userId}(userId=${userId})}" method="get" class="side-by">
+        <button type="submit" class="big-button">User Page</button>
+    </form>
+
+</div>
 </body>
 </html>

@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<title>Users</title>
+	<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <div class="frame">
@@ -19,6 +20,11 @@
 			</a>
 		</div>
 		<hr>
+	</div>
+	<div>
+		<form th:action="@{/register}" method="get" class="side-by">
+			<button type="submit" class="big-button">Create New User</button>
+		</form>
 	</div>
 </div>
 </body>
