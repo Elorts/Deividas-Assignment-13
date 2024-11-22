@@ -5,21 +5,20 @@ import com.coderscampus.assignment13.domain.Address;
 import com.coderscampus.assignment13.domain.Account;
 import com.coderscampus.assignment13.domain.User;
 import com.coderscampus.assignment13.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserService {
 
-    @Autowired
-    private UserRepository userRepo;
+    private final UserRepository userRepo;
+    private final AccountService accountService;
+    private final AddressService addressService;
 
-    @Autowired
-    private AccountService accountService;
-
-    @Autowired
-    private AddressService addressService;
-
+    public UserService(UserRepository userRepo, AccountService accountService, AddressService addressService) {
+        this.userRepo = userRepo;
+        this.accountService = accountService;
+        this.addressService = addressService;
+    }
 
     public Set<User> findAll() {
         return userRepo.findAllUsersWithAccountsAndAddresses();
