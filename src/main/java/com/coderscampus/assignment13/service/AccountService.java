@@ -3,6 +3,7 @@ package com.coderscampus.assignment13.service;
 import com.coderscampus.assignment13.domain.Account;
 import com.coderscampus.assignment13.domain.User;
 import com.coderscampus.assignment13.repository.AccountRepository;
+
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
@@ -10,14 +11,12 @@ import org.springframework.stereotype.Service;
 public class AccountService {
 
     private final AccountRepository accountRepo;
-
     private final UserService userService;
 
     public AccountService(AccountRepository accountRepo, @Lazy UserService userService) {
         this.accountRepo = accountRepo;
         this.userService = userService;
     }
-
 
     public Account getAccount(Long accountId) {
         return accountRepo.findById(accountId).orElse(null);

@@ -7,7 +7,6 @@
 <body>
 <div class="frame">
 	<h1>Users</h1>
-
 	<div th:each="user : ${users}">
 		<a th:href="@{/user/{userId}(userId=${user.userId})}">[[${user.userId}]]</a><br>
 		<span th:text="${user.username}"></span><br>
