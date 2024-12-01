@@ -78,13 +78,26 @@ public class UserController {
     }
 
     @PostMapping("/user/{userId}")
-    public String postOneUser(User user, Address address) {
+    public String postOneUser(User user) { //, Address address) {
         if (user.getPassword().isEmpty()) {
             user.setPassword(userService.findById(user.getUserId()).getPassword());
         }
 
+        System.out.println("User id *********************************************** : " + user.getUserId());
+
+
+
+
         userService.saveUser(user);
-        addressService.saveAddress(address);
+
+        System.out.println("*************************************************************************************************** : ");
+
+
+        addressService.saveAddress(user.getAddress());
+
+
+
+
         return "redirect:/user/" + user.getUserId();
     }
 
