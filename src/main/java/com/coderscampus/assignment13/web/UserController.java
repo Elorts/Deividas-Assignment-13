@@ -69,11 +69,7 @@ public class UserController {
     @GetMapping("/user/{userId}")
     public String getOneUser(ModelMap model, @PathVariable Long userId) {
         User user = userService.findById(userId);
-//        Address address = addressService.getAddress(userId);
         model.put("user", user);
-//        model.put("users", Arrays.asList(user));
-//        model.put("address", address);
-//        model.put("accounts", user.getAccounts());
         return "user";
     }
 
@@ -83,24 +79,11 @@ public class UserController {
             user.setPassword(userService.findById(user.getUserId()).getPassword());
         }
 
-        System.out.println("User id *********************************************** : " + user.getUserId());
-
         Address address = user.getAddress();
-
-        System.out.println("Address:             ------------------------ " + address);
-
         address.setUserId(user.getUserId());
+
         addressService.saveAddress(address);
-
         userService.saveUser(user);
-
-        System.out.println("*************************************************************************************************** : ");
-
-
-
-
-
-
 
         return "redirect:/user/" + user.getUserId();
     }
