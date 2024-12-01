@@ -8,71 +8,82 @@
 <body>
 <div class="frame">
     <h1>User</h1>
-    <!-- User Edit Form -->
     <form id="user-edit-form" th:action="@{/user/{userId}(userId=${user.userId})}" method="post">
-        <fieldset>
-            <legend>User Details</legend>
-            <label for="username">Username:</label><br>
-            <input id="username" type="text" th:field="${user.username}" /><br>
+        <div>
+            <label>Username:</label><br>
+            <input type="text" th:field="${user.username}" /><br><br>
+        </div>
+        <div>
+            <label>Password:</label><br>
+            <input type="password" th:field="${user.password}" /><br><br>
+        </div>
+        <div>
+            <label>Full Name:</label><br>
+            <input type="text" th:field="${user.name}" /><br><br>
+        </div>
 
-            <label for="password">Password:</label><br>
-            <input id="password" type="password" th:field="${user.password}" /><br>
+        <hr/>
 
-            <label for="full-name">Full Name:</label><br>
-            <input id="full-name" type="text" th:field="${user.name}" /><br>
-        </fieldset>
+        <p>
+        <div>
+            <label>Address Line 1:</label><br>
+            <input type="text" th:field="${address.addressLine1}" /><br><br>
+        </div>
+        <div>
+            <label>Address Line 2:</label><br>
+            <input type="text" th:field="${address.addressLine2}" /><br><br>
+        </div>
+        <div>
+            <label>City:</label><br>
+            <input type="text" th:field="${address.city}" /><br><br>
+        </div>
+        <div>
+            <label>Region:</label><br>
+            <input type="text" th:field="${address.region}" /><br><br>
+        </div>
+        <div>
+            <label>Country:</label><br>
+            <input type="text" th:field="${address.country}" /><br><br>
+        </div>
+        <div>
+            <label>Zip Code:</label><br>
+            <input type="text" th:field="${address.zipCode}" /><br><br>
+        </div>
 
-        <fieldset>
-            <legend>Address</legend><br>
-            <label for="address-line1">Address Line 1:</label><br>
-            <input id="address-line1" type="text" th:field="${address.addressLine1}" /><br>
+        <input type="hidden" th:field="${user.accounts}" />
 
-            <label for="address-line2">Address Line 2:</label><br>
-            <input id="address-line2" type="text" th:field="${address.addressLine2}" /><br>
+        </p>
 
-            <label for="city">City:</label><br>
-            <input id="city" type="text" th:field="${address.city}" /><br>
-
-            <label for="region">Region:</label><br>
-            <input id="region" type="text" th:field="${address.region}" /><br>
-
-            <label for="country">Country:</label><br>
-            <input id="country" type="text" th:field="${address.country}" /><br>
-
-            <label for="zip-code">Zip Code:</label><br>
-            <input id="zip-code" type="text" th:field="${address.zipCode}" /><br>
-        </fieldset>
-
-        <div class="form-actions">
-            <button type="submit" class="big-button">Update User</button>
+        <div>
+            <input class="big-button" type="submit" value="Update User" />
         </div>
     </form>
-
-    <!-- Delete User Form -->
+    <br>
     <form th:action="@{/user/{userId}/delete(userId=${user.userId})}" method="post">
-        <button type="submit" class="big-button danger">Delete User</button>
+        <input class="big-button" type="submit" value="Delete User" />
     </form>
 
-    <!-- User Accounts Section -->
-    <hr>
+    <hr/>
+
     <h1>Accounts</h1>
-
-        <div th:each="account : ${user.accounts}">
-            <a th:href="@{/user/{userId}/accounts/{accountId} (userId=${user.userId}, accountId=${account.accountId})}">
-                [[${account.accountName}]]
-            </a>
-        </div>
-
-
-    <!-- Other Actions -->
-    <div class="actions">
-        <form th:action="@{/user/{userId}/accounts (userId=${user.userId})}" method="post" class="inline-form">
-            <button type="submit" class="big-button">Create Account</button>
+    <div th:each="account : ${user.accounts}">
+        <a th:href="@{/user/{userId}/accounts/{accountId} (userId=${user.userId}, accountId=${account.accountId})}">
+            [[${account.accountName}]]
+        </a>
+    </div>
+    <p>
+    <div>
+        <form class="side-by-side" th:action="@{/user/{userId}/accounts (userId=${user.userId})}" method="post">
+            <input class="big-button" type="submit" value="Create Account" />
         </form>
-        <form th:action="@{/users}" method="get" class="inline-form">
+
+        <br/>
+
+        <form class="side-by-side" th:action="@{/users}" method="get" >
             <button type="submit" class="big-button">User Page</button>
         </form>
     </div>
+    </p>
 </div>
 
 <script>
