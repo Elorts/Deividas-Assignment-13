@@ -56,13 +56,13 @@
     <!-- User Accounts Section -->
     <hr>
     <h1>Accounts</h1>
-    <ul>
-        <li th:each="account : ${user.accounts}">
+
+        <div th:each="account : ${user.accounts}">
             <a th:href="@{/user/{userId}/accounts/{accountId} (userId=${user.userId}, accountId=${account.accountId})}">
                 [[${account.accountName}]]
             </a>
-        </li>
-    </ul>
+        </div>
+
 
     <!-- Other Actions -->
     <div class="actions">
