@@ -69,11 +69,11 @@ public class UserController {
     @GetMapping("/user/{userId}")
     public String getOneUser(ModelMap model, @PathVariable Long userId) {
         User user = userService.findById(userId);
-        Address address = addressService.getAddress(userId);
+//        Address address = addressService.getAddress(userId);
         model.put("user", user);
-        model.put("users", Arrays.asList(user));
-        model.put("address", address);
-        model.put("accounts", user.getAccounts());
+//        model.put("users", Arrays.asList(user));
+//        model.put("address", address);
+//        model.put("accounts", user.getAccounts());
         return "user";
     }
 

@@ -1,5 +1,7 @@
 package com.coderscampus.assignment13.domain;
 
+import org.hibernate.annotations.Cascade;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +29,8 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "account_id"))
     private List<Account> accounts = new ArrayList<>();
 
-    @OneToOne(mappedBy = "user")
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Address address;
 
     public Long getUserId() {
