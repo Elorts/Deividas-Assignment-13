@@ -85,15 +85,19 @@ public class UserController {
 
         System.out.println("User id *********************************************** : " + user.getUserId());
 
+        Address address = user.getAddress();
 
+        System.out.println("Address:             ------------------------ " + address);
 
+        address.setUserId(user.getUserId());
+        addressService.saveAddress(address);
 
         userService.saveUser(user);
 
         System.out.println("*************************************************************************************************** : ");
 
 
-        addressService.saveAddress(user.getAddress());
+
 
 
 
