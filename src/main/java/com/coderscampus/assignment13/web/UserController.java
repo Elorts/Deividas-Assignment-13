@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.Arrays;
 import java.util.Set;
 
 @Controller
@@ -90,10 +89,6 @@ public class UserController {
 
     @PostMapping("/user/{userId}/delete")
     public String deleteOneUser(@PathVariable Long userId) {
-
-        System.out.println("************************* insode delete post. User id: " + userId);
-
-
         addressService.delete(userId);
         userService.delete(userId);
         return "redirect:/users";

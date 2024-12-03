@@ -30,7 +30,7 @@ public class User {
     private List<Account> accounts = new ArrayList<>();
 
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.PERSIST)
+    @OneToOne(mappedBy = "user")
     private Address address;
 
     public Long getUserId() {
