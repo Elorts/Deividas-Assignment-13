@@ -91,7 +91,8 @@ public class UserController {
     @PostMapping("/user/{userId}/delete")
     public String deleteOneUser(@PathVariable Long userId) {
 
-        System.out.println("************************* insode delete post");
+        System.out.println("************************* insode delete post. User id: " + userId);
+
 
         addressService.delete(userId);
         userService.delete(userId);
