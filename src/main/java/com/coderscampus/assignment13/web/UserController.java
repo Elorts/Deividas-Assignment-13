@@ -90,6 +90,9 @@ public class UserController {
 
     @PostMapping("/user/{userId}/delete")
     public String deleteOneUser(@PathVariable Long userId) {
+
+        System.out.println("************************* insode delete post");
+
         addressService.delete(userId);
         userService.delete(userId);
         return "redirect:/users";
